@@ -7,5 +7,6 @@
     height="89"
     src="/ximx1lgifouediy0mjlw"
     alt=""
+      className="hidden md:block "
   />
 )}

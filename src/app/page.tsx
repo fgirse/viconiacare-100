@@ -21,7 +21,7 @@ export default function Home() {
            <div className="absolute right-1">
             <Link href="/appointment" >
               <div className="  ">
-              <Image src={TerminButton} alt="TerminButton" width={400} height={200} className=" relative top-[62vh] right-[6rem] p-6 size-72 md:size-96 "/>
+              <Image src={TerminButton} alt="TerminButton" width={400} height={200} className=" relative top-[62vh] right-[6rem] p-6 size-72 md:size-96 lg:top-[65vh] "/>
               </div>
               </Link>
             </div>
