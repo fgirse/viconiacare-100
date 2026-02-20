@@ -129,3 +129,65 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* BowlbyOneSC/-sc-regular - latin */
+@font-face {
+  font-family: 'Bowlby One SC';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local(''),
+    url('@/public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.eot') format('embedded-opentype'),
+    url('@/public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.woff2') format('woff2'),
+    url('@/public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.woff') format('woff'),
+    url('@/public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.ttf') format('truetype'),
+    url('@/public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.svg') format('svg');
+}
+
+.headingA {
+  -webkit-text-stroke-width: 2.33px;
+  -webkit-text-stroke-color: #ffffff;
+  font-family: 'Bowlby One SC';
+}
+.headingG {
+  -webkit-text-stroke-width: 0.53px;
+  -webkit-text-stroke-color: #ffffff;
+  font-family: 'Bowlby One SC';
+}
+
+.headingB {
+  -webkit-text-stroke-width: 1.33px;
+  -webkit-text-stroke-color: #ffcc00;
+  font-family: 'Architects Daughter';
+}
+
+.headingC {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: orange;
+  font-family: 'Architects Daughter';
+}
+
+.headingD {
+  -webkit-text-stroke-width: 0.66px;
+  -webkit-text-stroke-color: #595959;
+  font-family: 'Architects Daughter';
+  font-weight: 800;
+}
+
+.headingE {
+  -webkit-text-stroke-width: 3.99px;
+  -webkit-text-stroke-color: #595959;
+  font-family: 'Bowlby One SC';
+  font-weight: 800;
+}
+
+.headingF {
+  -webkit-text-stroke-width: 3.66px;
+  -webkit-text-stroke-color: #fffffc;
+  font-family: 'Bowlby One SC';
+  font-weight: 800;
+}
+
+.kontakt {
+   font-size: clamp(4.80rem, calc(0.346rem + 6.462vw), 15.10rem);
+}

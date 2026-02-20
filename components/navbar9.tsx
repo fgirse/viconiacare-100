@@ -17,6 +17,7 @@ import { Fragment, useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import LogoText from "@/components/Cloudinary/HeroImageD"
 
 import {
   Accordion,
@@ -66,7 +67,7 @@ interface MenuSubLinkProps {
 
 const LOGO = {
   url: "/",
-  src: "/g178.svg",
+  src: "/ViconiaCareLogoobg.svg",
   alt: "logo",
   title: "ViconiaCare GmbH",
 };
@@ -166,7 +167,7 @@ const NAVIGATION: MenuItem[] = [
   },
   {
     title: "Menu-4",
-    url: "#",
+    url: "/menu_4",
   },
   {
     title: "Kontakt",
@@ -233,9 +234,10 @@ const Navbar9 = ({ className }: Navbar9Props) => {
                 height={200}
                 className="inline-block size-12 object-contain"
               />
-              <span className="hidden text-foreground md:inline-block">
+              <LogoText/>
+              {/*<span className="hidden text-foreground md:inline-block">
                 {LOGO.title}
-              </span>
+              </span>*/}
             </a>
             <NavigationMenu className="hidden lg:flex" viewport={false}>
               <NavigationMenuList className="uppercase lg:text-2xl">
