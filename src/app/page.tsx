@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import Logo_VivoniaCare from '@/public/ViconiaCareLogoobg.svg'
 import HouseOfCare from '@/public/Hero2.png'
-import Link from 'next/link';
-import TerminButton from '@/public/TerminButton.png'
+//import TerminButton from '@/public/TerminButton.png'
+//import Link from 'next/link'
+import ModalAppointment from '@/components/Modals/ModalAppointment'
+
 export default function Home() {
   return (
     <div className=" flex flex-col min-h-screen items-center justify-center font-sans dark:bg-black">
@@ -18,13 +20,12 @@ export default function Home() {
            <div className="flex flex-col items-center mt-5 w-full bg-zinc-600/10 dark:bg-black">
            <Image src={HouseOfCare} alt="House of Care" width={1452} height={532} className="p-1 "/>
            </div>
-           <div className="absolute right-1">
-            <Link href="/appointment" >
-              <div className="  ">
-              <Image src={TerminButton} alt="TerminButton" width={400} height={200} className=" relative top-[62vh] right-[6rem] p-6 size-72 md:size-96 lg:top-[65vh] "/>
-              </div>
-              </Link>
-            </div>
+           <ModalAppointment />
+           {/*<div className="absolute right-12 top-[50vh]">
+            <Link href="/appointment">
+            <Image src={TerminButton} alt="Termin Button" width={200} height={200} className='cursor-pointer'/>
+            </Link>
+            </div>*/}
       </main>
     </div>
   );

@@ -84,7 +84,7 @@ const NAVIGATION: MenuItem[] = [
       {
         label: "Geschichte",
         description: "Geschichte der ViconiaCare GmbH",
-        url: "#",
+        url: "/about/history",
         icon: {
           component: FileText,
           color: "#10b981",
@@ -93,7 +93,7 @@ const NAVIGATION: MenuItem[] = [
       {
         label: "Leitbild",
         description: "Leitbild & Werte",
-        url: "#",
+        url: "/about/leitbild",
         icon: {
           component: Grid,
           color: "#6366f1",
@@ -102,7 +102,7 @@ const NAVIGATION: MenuItem[] = [
       {
         label: "Team",
         description: "Unser Team stellt sich vor",
-        url: "#",
+        url: "/about/team",
         icon: {
           component: Grid,
           color: "#6366f1",
@@ -278,7 +278,7 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
   if (item.links) {
     return (
       <NavigationMenuItem key={`desktop-menu-item-${index}`} value={`${index}`}>
-        <NavigationMenuTrigger className="h-fit bg-yellow-600 font-black uppercase text-foreground focus:!bg-yellow-600 data-[active=true]:!bg-transparent">
+        <NavigationMenuTrigger className="h-fit bg-yellow-600 font-black uppercase hover:bg-yellow-700 text-foreground focus:!bg-green-600 data-[active=true]:!bg-yellow-700">
           {item.title}
         </NavigationMenuTrigger>
         <NavigationMenuContent className="!rounded-xl !p-0">
@@ -373,7 +373,7 @@ const renderMobileMenuItem = (item: MenuItem, index: number) => {
   if (item.links) {
     return (
       <AccordionItem key={item.title} value={`nav-${index}`}>
-        <AccordionTrigger className="h-[3.75rem] items-center hover:bg-yellow-700 p-5 uppercase text-xl leading-[3.75] font-black text-muted-foreground hover:no-underline">
+        <AccordionTrigger className="h-[3.75rem] items-center hover:bg-yellow-700 p-5 uppercase text-xl leading-[3.75] font-black text-muted-foreground ">
           {item.title}
         </AccordionTrigger>
         <AccordionContent>

@@ -1,5 +1,3 @@
-"use client";
-
 /* First make sure that you have installed the package */
 
 /* If you are using yarn */
@@ -7,24 +5,24 @@
 
 /* If you are using npm */
 // npm install @calcom/embed-react
+"use client"
   
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 export default function MyApp() {
   useEffect(() => {
     (async function () {
-      const cal = await getCalApi({"namespace":"info-telefonat"});
+      const cal = await getCalApi({"namespace":"interview"});
       cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     })();
   }, [])
-  return <Cal namespace="info-telefonat"
-    calLink="viconiacare/info-telefonat"
+  return <Cal namespace="interview"
+    calLink="viconiacare/interview"
+    calOrigin="https://cal.eu"
     style={{width:"100%",height:"100%",overflow:"scroll"}}
     config={{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}}
     
     
   />;
 };
-  
-
   
