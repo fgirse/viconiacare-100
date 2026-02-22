@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Logo_VivoniaCare from '@/public/ViconiaCareLogoobg.svg'
-import HouseOfCare from '@/public/Hero2.png'
+import HouseOfCare from '@/public/Hero3.png'
 //import TerminButton from '@/public/TerminButton.png'
 //import Link from 'next/link'
 import ModalAppointment from '@/components/Modals/ModalAppointment'
@@ -18,7 +18,7 @@ export default function Home() {
        </div>
        <h1 className="bg-gradient-to-r from-zinc-600 via-zinc-500 to-zinc-200 bg-clip-text text-transparent text-center text-[10vw] leading-12 md:leading-none font-black tracking-tight dark:text-white sm:text-[8vw] md:text-[10vw] md:mt-[3vh] lg:text-[4vw] lg:mt-[-2vh]">Pflege-verbindet mit Herz & Vielfalt </h1>
            <div className="flex flex-col items-center mt-5 w-full bg-zinc-600/10 dark:bg-black">
-           <Image src={HouseOfCare} alt="House of Care" width={1452} height={532} className="p-1 "/>
+           <Image src={HouseOfCare} alt="House of Care" width={3200} height={1800} className="p-1 "/>
            </div>
            <ModalAppointment />
            {/*<div className="absolute right-12 top-[50vh]">
