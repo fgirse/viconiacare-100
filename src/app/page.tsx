@@ -16,9 +16,9 @@ export default function Home() {
               <h1 className=" bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400 bg-clip-text text-transparent text-[13vw] font-bold tracking-tight text-gray-900 dark:text-white md:text-[13vw] lg:text-[11vw]">ViconiaCare</h1> 
              
        </div>
-       <h1 className="bg-gradient-to-r from-zinc-600 via-zinc-500 to-zinc-200 bg-clip-text text-transparent text-center text-[10vw] leading-12 md:leading-none font-black tracking-tight dark:text-white sm:text-[8vw] md:text-[10vw] md:mt-[3vh] lg:text-[4vw] lg:mt-[-2vh]">Pflege-verbindet mit Herz & Vielfalt </h1>
-           <div className="flex flex-col items-center mt-5 w-full bg-zinc-600/10 dark:bg-black">
-           <Image src={HouseOfCare} alt="House of Care" width={3200} height={1800} className="p-1 "/>
+       <h1 className="bg-gradient-to-r from-zinc-600 via-zinc-500 to-zinc-200 bg-clip-text text-transparent text-center text-[10vw] leading-12 md:leading-none font-black tracking-tight dark:text-white sm:text-[8vw] md:text-[10vw] md:mt-[3vh] lg:text-[4vw] lg:mt-[-2vh]">Pflege - menschlich modern & fair </h1>
+           <div className="flex flex-col items-center mt-5 w-full  dark:bg-black">
+           <Image src={HouseOfCare} alt="House of Care" width={4500} height={1800} className="p-1 "/>
            </div>
            <ModalAppointment />
            {/*<div className="absolute right-12 top-[50vh]">
