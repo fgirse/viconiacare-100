@@ -3,6 +3,7 @@
 import {
   Bell,
   Book,
+  Castle,
   ChevronRight,
   FileText,
   Globe,
@@ -11,6 +12,7 @@ import {
   Info,
   LucideIcon,
   Menu,
+  User,
   X,
 } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
@@ -86,8 +88,8 @@ const NAVIGATION: MenuItem[] = [
         description: "Geschichte der ViconiaCare GmbH",
         url: "/about/history",
         icon: {
-          component: FileText,
-          color: "#10b981",
+          component: Castle,
+          color: "#f3c807ff",
         },
       },
       {
@@ -96,7 +98,7 @@ const NAVIGATION: MenuItem[] = [
         url: "/about/leitbild",
         icon: {
           component: Grid,
-          color: "#6366f1",
+          color: "#f3c807ff",
         },
       },
       {
@@ -104,8 +106,8 @@ const NAVIGATION: MenuItem[] = [
         description: "Unser Team stellt sich vor",
         url: "/about/team",
         icon: {
-          component: Grid,
-          color: "#6366f1",
+          component: User,
+          color: "#f3c807ff",
         },
       },
     ],
@@ -119,7 +121,7 @@ const NAVIGATION: MenuItem[] = [
         description: "Our mission & values",
         icon: {
           component: Info,
-          color: "#f59e0b",
+          color: "#f3c807ff",
         },
       },
       {
@@ -128,7 +130,7 @@ const NAVIGATION: MenuItem[] = [
         description: "Get quick help",
         icon: {
           component: HelpCircle,
-          color: "#3b82f6",
+          color: "#f3c807ff",
         },
       },
       {
@@ -137,7 +139,7 @@ const NAVIGATION: MenuItem[] = [
         description: "Product updates",
         icon: {
           component: Bell,
-          color: "#f97316",
+          color: "#f3c807ff",
         },
       },
     ],
@@ -151,7 +153,7 @@ const NAVIGATION: MenuItem[] = [
         description: "Guides & references",
         icon: {
           component: Book,
-          color: "#8b5cf6",
+          color: "#f3c807ff",
         },
       },
       {
@@ -160,7 +162,7 @@ const NAVIGATION: MenuItem[] = [
         description: "Explore our API",
         icon: {
           component: Globe,
-          color: "#ef4444",
+          color: "#f3c807ff",
         },
       },
     ],

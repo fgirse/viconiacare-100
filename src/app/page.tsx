@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import Logo_VivoniaCare from '@/public/ViconiaCareLogoobg.svg'
 import HouseOfCare from '@/public/Hero3.png'
-//import TerminButton from '@/public/TerminButton.png'
-//import Link from 'next/link'
 import ModalAppointment from '@/components/Modals/ModalAppointment'
+//import { Hero226 } from '@/components/Hero01'
 
 export default function Home() {
   return (
@@ -21,11 +20,8 @@ export default function Home() {
            <Image src={HouseOfCare} alt="House of Care" width={4500} height={1800} className="p-1 "/>
            </div>
            <ModalAppointment />
-           {/*<div className="absolute right-12 top-[50vh]">
-            <Link href="/appointment">
-            <Image src={TerminButton} alt="Termin Button" width={200} height={200} className='cursor-pointer'/>
-            </Link>
-            </div>*/}
+          
+          
       </main>
     </div>
   );
