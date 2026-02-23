@@ -1,6 +1,6 @@
 import { buildConfig } from 'payload'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { slateEditor } from '@payloadcms/richtext-slate'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 
 // Collections
@@ -27,7 +27,7 @@ export default buildConfig({
   },
 
   // ── Editor ─────────────────────────────────────────────
-  editor: slateEditor({}),
+  editor: lexicalEditor({}),
 
   // ── Database ───────────────────────────────────────────
   db: mongooseAdapter({
