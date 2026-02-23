@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import Logo_VivoniaCare from '@/public/ViconiaCareLogoobg.svg';
-import HouseOfCare from '@/public/Hero3.png';
-import ModalAppointment from '@/src/components/Modals/ModalAppointment';
-import CalWidgetStandalone from '@/src/components/booking/CalWidgetStandalone';
+import Image from 'next/image'
+import Logo_VivoniaCare from '@/public/ViconiaCareLogoobg.svg'
+import HouseOfCare from '@/public/Hero3.png'
+import ModalAppointment from '@/src/components/Modals/ModalAppointment'
+import CalWidgetStandalone from '@/src/components/booking/CalWidgetStandalone'
 
 export default function Home() {
   return (
