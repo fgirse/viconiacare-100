@@ -35,17 +35,6 @@ const nextConfig: NextConfig = {
       },
     ]
   },
-
-  async redirects() {
-    return [
-      // Redirect root → default locale
-      {
-        source: '/',
-        destination: '/de',
-        permanent: false,
-      },
-    ]
-  },
 }
 
 export default withPayload(nextConfig)
