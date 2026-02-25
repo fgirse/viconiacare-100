@@ -76,7 +76,7 @@ interface MenuSubLinkProps {
 
 const LOGO = {
   url: "/",
-  src: {LogoViconiaCare},
+  src: LogoViconiaCare,
   alt: "logo",
   title: "ViconiaCare GmbH",
 };
