@@ -22,6 +22,7 @@ import Image from "next/image";
 import { Link, usePathname } from "@/src/i18n/navigation";
 import type { routing } from "@/src/i18n/routing";
 import LogoText from "@/src/components/Cloudinary/HeroImageD";
+import LogoViconiaCare from "@/public/images/ViconiaCareLogoobg.svg";
 
 type AppPathname = keyof typeof routing.pathnames;
 
@@ -75,7 +76,7 @@ interface MenuSubLinkProps {
 
 const LOGO = {
   url: "/",
-  src: "/ViconiaCareLogoobg.svg",
+  src: {LogoViconiaCare},
   alt: "logo",
   title: "ViconiaCare GmbH",
 };
