@@ -19,8 +19,11 @@ import { useTranslations } from "next-intl";
 
 import { cn } from "@/src/lib/utils/utils";
 import Image from "next/image";
-import { Link } from "@/src/i18n/navigation";
-import LogoText from "@/src/components/Cloudinary/HeroImageD"
+import { Link, usePathname } from "@/src/i18n/navigation";
+import type { routing } from "@/src/i18n/routing";
+import LogoText from "@/src/components/Cloudinary/HeroImageD";
+
+type AppPathname = keyof typeof routing.pathnames;
 
 import {
   Accordion,
@@ -193,8 +196,8 @@ const Navbar9 = ({ className }: Navbar9Props) => {
       >
         <div className="container h-16">
           <div className="ml-12 flex h-full items-center justify-between">
-            <a
-              href={LOGO.url}
+            <Link
+              href="/"
               className="flex max-h-8 items-center gap-2 text-lg font-semibold tracking-tighter"
             >
               <Image
@@ -208,7 +211,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
               {/*<span className="hidden text-foreground md:inline-block">
                 {LOGO.title}
               </span>*/}
-            </a>
+            </Link>
             <NavigationMenu className="hidden lg:flex" viewport={false}>
               <NavigationMenuList className="uppercase lg:text-2xl">
                 {navigation.map((item, index) => (
@@ -244,10 +247,20 @@ const Navbar9 = ({ className }: Navbar9Props) => {
 };
 
 const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
+  const pathname = usePathname();
+  const isActive = item.url
+    ? item.url === pathname
+    : item.links?.some((l) => l.url === pathname) ?? false;
+
   if (item.links) {
     return (
       <NavigationMenuItem key={`desktop-menu-item-${index}`} value={`${index}`}>
-        <NavigationMenuTrigger className="h-fit bg-yellow-600 font-black uppercase hover:bg-yellow-700 text-foreground focus:!bg-green-600 data-[active=true]:!bg-yellow-700">
+        <NavigationMenuTrigger
+          className={cn(
+            "h-fit bg-yellow-600 font-black uppercase hover:bg-yellow-700 text-foreground focus:!bg-green-600",
+            isActive && "!bg-yellow-700 underline underline-offset-4",
+          )}
+        >
           {item.title}
         </NavigationMenuTrigger>
         <NavigationMenuContent className="!rounded-xl !p-0">
@@ -267,39 +280,96 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
     <NavigationMenuItem key={`desktop-menu-item-${index}`} value={`${index}`}>
       <NavigationMenuLink
         asChild
-        className={`${navigationMenuTriggerStyle()} h-fit bg-yellow-600 font-black hover:bg-yellow-700 text-foreground`}
+        className={cn(
+          navigationMenuTriggerStyle(),
+          "h-fit bg-yellow-600 font-black hover:bg-yellow-700 text-foreground",
+          isActive && "!bg-yellow-700 underline underline-offset-4",
+        )}
       >
-        <Link href={item.url ?? '/'}>{item.title}</Link>
+        <Link href={(item.url ?? "/") as AppPathname}>{item.title}</Link>
       </NavigationMenuLink>
     </NavigationMenuItem>
   );
 };
 
 const MenuSubLink = ({ link }: MenuSubLinkProps) => {
+  const isPath = link.url?.startsWith("/") ?? false;
+
+  const inner = (
+    <div className="flex w-full items-center justify-between">
+      <div className="flex gap-2.5">
+        {link.icon && (
+          <link.icon.component
+            className="size-5"
+            style={{ stroke: link.icon.color }}
+          />
+        )}
+        <div className="flex flex-col gap-1.5">
+          <h3 className="text-sm leading-none text-foreground">{link.label}</h3>
+          <p className="text-sm leading-[1.2] text-muted-foreground/80">
+            {link.description}
+          </p>
+        </div>
+      </div>
+      <ChevronRight className="size-3.5 stroke-muted-foreground opacity-100" />
+    </div>
+  );
+
+  if (isPath) {
+    return (
+      // @ts-expect-error – url is a valid AppPathname when isPath is true
+      <Link href={link.url} className="flex items-center gap-4 rounded-lg p-2 hover:bg-muted">
+        {inner}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href="#"
+      aria-disabled="true"
+      className="flex items-center gap-4 rounded-lg p-2 opacity-40 cursor-not-allowed pointer-events-none"
+    >
+      {inner}
+    </a>
+  );
+};
+
+const MobileNavItem = ({ item, index }: { item: MenuItem; index: number }) => {
+  const pathname = usePathname();
+  const isActive = item.url
+    ? item.url === pathname
+    : item.links?.some((l) => l.url === pathname) ?? false;
+
+  if (item.links) {
+    return (
+      <AccordionItem value={`nav-${index}`}>
+        <AccordionTrigger
+          className={cn(
+            "h-[3.75rem] items-center hover:bg-yellow-700 p-5 uppercase text-xl leading-[3.75] font-black",
+            isActive ? "text-yellow-400" : "text-muted-foreground",
+          )}
+        >
+          {item.title}
+        </AccordionTrigger>
+        <AccordionContent>
+          {item.links.map((subItem) => (
+            <MenuSubLink key={subItem.label} link={subItem} />
+          ))}
+        </AccordionContent>
+      </AccordionItem>
+    );
+  }
+
   return (
     <Link
-      href={link.url ?? '/'}
-      className="flex items-center gap-4 rounded-lg p-2 hover:bg-muted"
+      href={(item.url ?? "/") as AppPathname}
+      className={cn(
+        "flex h-[3.75rem] items-center border-b p-5 uppercase hover:bg-yellow-700 text-left text-xl leading-[3.75] font-black ring-ring/10 outline-ring/50 transition-all focus-visible:ring-4 focus-visible:outline-1 nth-last-1:border-0",
+        isActive ? "text-yellow-400" : "text-muted-foreground",
+      )}
     >
-      <div className="flex w-full items-center justify-between">
-        <div className="flex gap-2.5">
-          {link.icon && (
-            <link.icon.component
-              className="size-5"
-              style={{ stroke: link.icon.color }}
-            />
-          )}
-          <div className="flex flex-col gap-1.5">
-            <h3 className="text-sm leading-none text-foreground">
-              {link.label}
-            </h3>
-            <p className="text-sm leading-[1.2] text-muted-foreground/80">
-              {link.description}
-            </p>
-          </div>
-        </div>
-        <ChevronRight className="size-3.5 stroke-muted-foreground opacity-100" />
-      </div>
+      {item.title}
     </Link>
   );
 };
@@ -321,9 +391,9 @@ const MobileNavigationMenu = ({ open, navigation, primaryButton }: MobileNavigat
             </div>
             <div className="flex h-full flex-col justify-between gap-20">
               <Accordion type="multiple" className="w-full">
-                {navigation.map((item, index) =>
-                  renderMobileMenuItem(item, index),
-                )}
+                {navigation.map((item, index) => (
+                  <MobileNavItem key={`mobile-${index}`} item={item} index={index} />
+                ))}
               </Accordion>
               <div className="pb-20">
                 <Button asChild className="w-full">
@@ -335,33 +405,6 @@ const MobileNavigationMenu = ({ open, navigation, primaryButton }: MobileNavigat
         </div>
       </SheetContent>
     </Sheet>
-  );
-};
-
-const renderMobileMenuItem = (item: MenuItem, index: number) => {
-  if (item.links) {
-    return (
-      <AccordionItem key={item.title} value={`nav-${index}`}>
-        <AccordionTrigger className="h-[3.75rem] items-center hover:bg-yellow-700 p-5 uppercase text-xl leading-[3.75] font-black text-muted-foreground ">
-          {item.title}
-        </AccordionTrigger>
-        <AccordionContent>
-          {item.links.map((subItem) => (
-            <MenuSubLink key={subItem.label} link={subItem} />
-          ))}
-        </AccordionContent>
-      </AccordionItem>
-    );
-  }
-
-  return (
-    <Link
-      key={item.title}
-      href={item.url ?? '/'}
-      className="flex h-[3.75rem] items-center border-b p-5 uppercase hover:bg-yellow-700 text-left text-xl leading-[3.75] font-black text-muted-foreground ring-ring/10 outline-ring/50 transition-all focus-visible:ring-4 focus-visible:outline-1 nth-last-1:border-0"
-    >
-      {item.title}
-    </Link>
   );
 };
 
