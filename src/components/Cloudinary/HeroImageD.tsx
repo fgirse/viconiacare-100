@@ -7,7 +7,7 @@ export default function HeroImageD() {
       width="153"
       height="89"
       src="/ximx1lgifouediy0mjlw"
-      alt=""
+      alt="vivonia care"
       className="hidden md:block"
       suppressHydrationWarning
     />

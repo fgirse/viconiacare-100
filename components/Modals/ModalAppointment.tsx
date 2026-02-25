@@ -16,6 +16,7 @@ import { Label } from "@/src/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 import { useState } from "react";
 import TerminButton from "@/public/buttonGruenobg.svg";
 
@@ -29,11 +30,12 @@ const routeMap: Record<string, string> = {
 
 const Example = () => {
   const router = useRouter();
+  const locale = useLocale();
   const [selected, setSelected] = useState<string>("phone");
 
   const handleConfirm = () => {
     const route = routeMap[selected];
-    if (route) router.push(route);
+    if (route) router.push(`/${locale}${route}`);
   };
 
   return (

@@ -1,28 +1,38 @@
-/* First make sure that you have installed the package */
+"use client";
 
-/* If you are using yarn */
-// yarn add @calcom/embed-react
+import dynamic from "next/dynamic";
+import { getCalApi } from "@calcom/embed-react";
+import { useEffect, useRef } from "react";
 
-/* If you are using npm */
-// npm install @calcom/embed-react
-"use client"
-  
-import Cal, { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
+// Load the Cal embed only on the client to avoid SSR performance.mark issues
+const Cal = dynamic(() => import("@calcom/embed-react").then(m => m.default), { ssr: false });
+
 export default function MyApp() {
+  const initialized = useRef(false);
+
   useEffect(() => {
+    // Guard against React 19 Strict Mode double-invocation
+    if (initialized.current) return;
+    initialized.current = true;
+
     (async function () {
-      const cal = await getCalApi({"namespace":"interview"});
-      cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+      const cal = await getCalApi({ namespace: "interview" });
+      cal("ui", {
+        cssVarsPerTheme: { light: { "cal-brand": "#d8971b" }, dark: { "cal-brand": "#fafafa" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
     })();
-  }, [])
-  return <Cal namespace="interview"
-    calLink="viconiacare/interview"
-    calOrigin="https://cal.eu"
-    style={{width:"100%",height:"100%",overflow:"scroll"}}
-    config={{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}}
-    
-    
-  />;
-};
+  }, []);
+
+  return (
+    <Cal
+      namespace="interview"
+      calLink="frank-girse-rjljth/interview"
+      style={{ width: "100%", height: "100%", overflow: "scroll" }}
+      config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true" }}
+    />
+  );
+}
+  
   

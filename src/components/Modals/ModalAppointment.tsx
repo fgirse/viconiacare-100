@@ -16,6 +16,7 @@ import { Label } from "@/src/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 import { useState } from "react";
 import TerminButton from "@/public/images/buttonGruenobg.svg";
 
@@ -29,25 +30,26 @@ const routeMap: Record<string, string> = {
 
 const Example = () => {
   const router = useRouter();
+  const locale = useLocale();
   const [selected, setSelected] = useState<string>("phone");
 
   const handleConfirm = () => {
     const route = routeMap[selected];
-    if (route) router.push(route);
+    if (route) router.push(`/${locale}${route}`);
   };
 
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
     
-          <Image src={TerminButton} alt="Termin Button" width={200} height={200} className="absolute w-36 top-[85vh] right-6  cursor-pointer absolute top-60 md:w-36 md:top-24 md:right-12 lg:w-54" />
+          <Image src={TerminButton} alt="Termin Button" width={200} height={200} className="absolute w-44 top-[75vh] right-1  cursor-pointer absolute top-60 md:w-36 md:top-24 md:right-12 lg:w-54" />
     
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Wählen Sie eine Terminkategorie aus!</AlertDialogTitle>
           <AlertDialogDescription>
-            Wählen Sie die Kategorie aus, die am besten zu Ihrem Anliegen passt, damit wir Ihnen den passenden Termin anbieten können. Anschliessend wählen Sie im nächsten Fenster Tag und Uhrzeit.
+            Wählen Sie die Kategorie aus, die am besten zu Ihrem Anliegen passt, damit wir Ihnen den passenden Termin anbieten können.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div className="py-4">
@@ -82,8 +84,8 @@ const Example = () => {
           </RadioGroup>
         </div>
         <AlertDialogFooter>
-          <AlertDialogCancel variant={undefined} size={undefined}>Abbrechen</AlertDialogCancel>
-          <AlertDialogAction className="bg-yellow-600 hover:bg-yellow-700" onClick={handleConfirm} variant={undefined} size={undefined}>Termin anfordern</AlertDialogAction>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
+          <AlertDialogAction className="bg-yellow-600 hover:bg-yellow-700" onClick={handleConfirm}>Termin anfordern</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

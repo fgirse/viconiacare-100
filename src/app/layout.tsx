@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Lato, JetBrains_Mono } from 'next/font/google';
+import { Playfair_Display, Lato, Bowlby_One_SC } from 'next/font/google';
 import { headers } from 'next/headers';
 import '@/src/app/globals.css';
 
@@ -18,10 +18,10 @@ const lato = Lato({
   display: 'swap',
 })
 
-const jetbrains = JetBrains_Mono({
+const bowlby = Bowlby_One_SC({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-mono',
+  weight: ['400'],
+  variable: '--font-bowlby',
   display: 'swap',
 })
 
@@ -57,7 +57,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${playfair.variable} ${lato.variable} ${jetbrains.variable}`}
+      className={`${playfair.variable} ${lato.variable} ${bowlby.variable}`}
     >
       <body
         className="font-body antialiased bg-white text-stone-900"

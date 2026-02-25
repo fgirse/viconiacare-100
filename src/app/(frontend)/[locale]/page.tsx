@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import Logo_VivoniaCare from '@/public/images/ViconiaCareLogoobg.svg';
-import HouseOfCare from '@/public/images/Hero3.png';
+import HouseOfCare from '@/public/images/Hero4.png';
 import ModalAppointment from '@/src/components/Modals/ModalAppointment';
-import ServiceSection from '@/src/components/sections/ServicesSection';
-//import HeroSection from '@/src/components/sections/HeroSection';
 
 export default function Home() {
   return (
@@ -13,15 +11,15 @@ export default function Home() {
           <div className="w-full md:w-2/4 flex flex-col items-center justify-center dark:bg-black">
               <Image src={Logo_VivoniaCare} alt="ViconiaCare Logo" width={200} height={200} className="text-center p-6 size-48 md:size-52 lg:size-72"/>
           </div>
-              <h1 className=" bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400 bg-clip-text text-transparent text-[13vw] font-bold tracking-tight text-gray-900 dark:text-white md:text-[13vw] lg:text-[11vw]">ViconiaCare</h1> 
+              <h1 className=" bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400 bg-clip-text text-transparent text-[13vw] font-passionate tracking-tight text-gray-900 dark:text-white md:text-[13vw] lg:text-[9vw]">ViconiaCare</h1> 
              
        </div>
        <h1 className="bg-gradient-to-r from-zinc-600 via-zinc-500 to-zinc-200 bg-clip-text text-transparent text-center text-[10vw] leading-12 md:leading-none font-black tracking-tight dark:text-white sm:text-[8vw] md:text-[10vw] md:mt-[3vh] lg:text-[4vw] lg:mt-[-2vh]">Pflege - menschlich modern & fair </h1>
            <div className="flex flex-col items-center mt-5 w-full  dark:bg-black">
-           <Image src={HouseOfCare} alt="House of Care" width={4500} height={1800} className="p-1 "/>
+           <Image src={HouseOfCare} alt="House of Care" width={1600} className="p-12 "/>
            </div>
            <ModalAppointment />
-           <ServiceSection/>
+        
            
       </main>
     </div>

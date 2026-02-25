@@ -17,10 +17,10 @@ interface LangOption {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Leistungen', href: '#services' },
-  { label: 'Über uns',   href: '#why-us'   },
-  { label: 'Termin',     href: '#booking'  },
-  { label: 'Kontakt',    href: '#contact'  },
+  { label: 'Leistungen', href: '#services'       },
+  { label: 'Über uns',   href: '/about/leitbild' },
+  { label: 'Termin',     href: '#booking'        },
+  { label: 'Kontakt',    href: '/contact'        },
 ]
 
 const LANGUAGES: LangOption[] = [
