@@ -47,7 +47,7 @@ const Example = () => {
         <AlertDialogHeader>
           <AlertDialogTitle>Wählen Sie eine Terminkategorie aus!</AlertDialogTitle>
           <AlertDialogDescription>
-            Wählen Sie die Kategorie aus, die am besten zu Ihrem Anliegen passt, damit wir Ihnen den passenden Termin anbieten können.
+            Wählen Sie die Kategorie aus, die am besten zu Ihrem Anliegen passt, damit wir Ihnen den passenden Termin anbieten können. Anschliessend wählen Sie im nächsten Fenster Tag und Uhrzeit.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div className="py-4">

@@ -19,7 +19,6 @@ export default function Home() {
           <Image src={HouseOfCare} alt="House of Care" width={4500} height={1800} className="p-1" />
         </div>
         <ModalAppointment />
-        <ServiceSection />
       </main>
     </div>
   )
