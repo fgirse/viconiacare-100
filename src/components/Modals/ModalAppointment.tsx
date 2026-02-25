@@ -17,7 +17,7 @@ import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import TerminButton from "@/public/buttonGruenobg.svg";
+import TerminButton from "@/public/images/buttonGruenobg.svg";
 
 export const title = "Form with Radio Group";
 

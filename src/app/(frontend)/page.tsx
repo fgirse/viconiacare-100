@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import Logo_VivoniaCare from '@/public/ViconiaCareLogoobg.svg'
-import HouseOfCare from '@/public/Hero3.png'
+import Logo_VivoniaCare from '@/public/images/ViconiaCareLogoobg.svg'
+import HouseOfCare from '@/public/images/Hero3.png'
 import ModalAppointment from '@/src/components/Modals/ModalAppointment'
-import CalWidgetStandalone from '@/src/components/booking/CalWidgetStandalone'
+import ServiceSection from '@/src/components/sections/ServicesSection'
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
           <Image src={HouseOfCare} alt="House of Care" width={4500} height={1800} className="p-1" />
         </div>
         <ModalAppointment />
-        <CalWidgetStandalone eventTypeId={'Phone'} title={'Phone Consultation'} description={'Erste telefonische Beratung'} />
+        <ServiceSection />
       </main>
     </div>
   )

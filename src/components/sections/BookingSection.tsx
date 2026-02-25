@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { cn } from '@/src/lib/utils/utils'
+import { cn } from '@/src/lib/utils/utils';
 import CalWidget from '@/src/components/booking/CalWidget'
 
 // ── Types ─────────────────────────────────────────────────────────────────────

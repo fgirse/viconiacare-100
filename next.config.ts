@@ -1,11 +1,19 @@
 import type { NextConfig } from 'next'
 import { withPayload } from '@payloadcms/next/withPayload'
+import createNextIntlPlugin from 'next-intl/plugin'
 
 const nextConfig: NextConfig = {
+  // Ensure the next-intl Turbopack alias survives the withPayload plugin merge
+  turbopack: {
+    resolveAlias: {
+      'next-intl/config': './src/i18n/request.ts',
+    },
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'res.cloudinary.com' },
       { protocol: 'https', hostname: '**.amazonaws.com' },
+      { protocol: 'https', hostname: '**.cloudfront.net' },
       { protocol: 'https', hostname: 'cal.com' },
     ],
     formats: ['image/avif', 'image/webp'],
@@ -37,4 +45,6 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withPayload(nextConfig)
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
+
+export default withNextIntl(withPayload(nextConfig))

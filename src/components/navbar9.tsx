@@ -15,9 +15,11 @@ import {
   X,
 } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import { cn } from "@/src/lib/utils/utils";
 import Image from "next/image";
+import { Link } from "@/src/i18n/navigation";
 import LogoText from "@/src/components/Cloudinary/HeroImageD"
 
 import {
@@ -60,6 +62,8 @@ interface DesktopMenuItemProps {
 
 interface MobileNavigationMenuProps {
   open: boolean;
+  navigation: MenuItem[];
+  primaryButton: { label: string; url: string };
 }
 
 interface MenuSubLinkProps {
@@ -73,114 +77,6 @@ const LOGO = {
   title: "ViconiaCare GmbH",
 };
 
-const NAVIGATION: MenuItem[] = [
-  {
-    title: "Start",
-    url: "/",
-  },
-
-  {
-    title: "über uns",
-    links: [
-      {
-        label: "Geschichte",
-        description: "Geschichte der ViconiaCare GmbH",
-        url: "/about/history",
-        icon: {
-          component: Castle,
-          color: "#f3c807ff",
-        },
-      },
-      {
-        label: "Leitbild",
-        description: "Leitbild & Werte",
-        url: "/about/leitbild",
-        icon: {
-          component: Grid,
-          color: "#f3c807ff",
-        },
-      },
-      {
-        label: "Team",
-        description: "Unser Team stellt sich vor",
-        url: "/about/team",
-        icon: {
-          component: User,
-          color: "#f3c807ff",
-        },
-      },
-    ],
-  },
-  {
-    title: "Angebot",
-    links: [
-      {
-        label: "About Our Team",
-        url: "#",
-        description: "Our mission & values",
-        icon: {
-          component: Info,
-          color: "#f3c807ff",
-        },
-      },
-      {
-        label: "Help & Support Center",
-        url: "#",
-        description: "Get quick help",
-        icon: {
-          component: HelpCircle,
-          color: "#f3c807ff",
-        },
-      },
-      {
-        label: "Latest News",
-        url: "#",
-        description: "Product updates",
-        icon: {
-          component: Bell,
-          color: "#f3c807ff",
-        },
-      },
-    ],
-  },
-  {
-    title: "Menu-3",
-    links: [
-      {
-        label: "Documentation",
-        url: "#",
-        description: "Guides & references",
-        icon: {
-          component: Book,
-          color: "#f3c807ff",
-        },
-      },
-      {
-        label: "API Reference",
-        url: "#",
-        description: "Explore our API",
-        icon: {
-          component: Globe,
-          color: "#f3c807ff",
-        },
-      },
-    ],
-  },
-  {
-    title: "Menu-4",
-    url: "/menu_4",
-  },
-  {
-    title: "Kontakt",
-    url: "/contact",
-  },
-];
-
-const PRIMARY_BUTTON = {
-  label: "Sign up",
-  url: "#",
-};
-
 const MOBILE_BREAKPOINT = 1024;
 
 interface Navbar9Props {
@@ -188,6 +84,79 @@ interface Navbar9Props {
 }
 
 const Navbar9 = ({ className }: Navbar9Props) => {
+  const t = useTranslations("nav");
+
+  const navigation: MenuItem[] = [
+    { title: t("home"), url: "/" },
+    {
+      title: t("about"),
+      links: [
+        {
+          label: t("history"),
+          description: t("history_desc"),
+          url: "/about/history",
+          icon: { component: Castle, color: "#f3c807ff" },
+        },
+        {
+          label: t("leitbild"),
+          description: t("leitbild_desc"),
+          url: "/about/leitbild",
+          icon: { component: Grid, color: "#f3c807ff" },
+        },
+        {
+          label: t("team"),
+          description: t("team_desc"),
+          url: "/about/team",
+          icon: { component: User, color: "#f3c807ff" },
+        },
+      ],
+    },
+    {
+      title: t("services"),
+      links: [
+        {
+          label: t("services_team"),
+          description: t("services_team_desc"),
+          url: "#",
+          icon: { component: Info, color: "#f3c807ff" },
+        },
+        {
+          label: t("services_support"),
+          description: t("services_support_desc"),
+          url: "#",
+          icon: { component: HelpCircle, color: "#f3c807ff" },
+        },
+        {
+          label: t("services_news"),
+          description: t("services_news_desc"),
+          url: "#",
+          icon: { component: Bell, color: "#f3c807ff" },
+        },
+      ],
+    },
+    {
+      title: t("resources"),
+      links: [
+        {
+          label: t("docs"),
+          description: t("docs_desc"),
+          url: "#",
+          icon: { component: Book, color: "#f3c807ff" },
+        },
+        {
+          label: t("api"),
+          description: t("api_desc"),
+          url: "#",
+          icon: { component: Globe, color: "#f3c807ff" },
+        },
+      ],
+    },
+    { title: t("menu4"), url: "/menu_4" },
+    { title: t("contact"), url: "/contact" },
+  ];
+
+  const primaryButton = { label: t("signup"), url: "#" };
+
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -242,8 +211,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
             </a>
             <NavigationMenu className="hidden lg:flex" viewport={false}>
               <NavigationMenuList className="uppercase lg:text-2xl">
-                {NAVIGATION.map((item, index) => (
-
+                {navigation.map((item, index) => (
                   <DesktopMenuItem
                     key={`desktop-link-${index}`}
                     item={item}
@@ -255,7 +223,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
             <div className="flex items-center gap-4">
               <GithubStars repoUrl="https://github.com/shadcn/ui" />
               <Button asChild>
-                <a href={PRIMARY_BUTTON.url}>{PRIMARY_BUTTON.label}</a>
+                <a href={primaryButton.url}>{primaryButton.label}</a>
               </Button>
               <div className="lg:hidden">
                 <Button variant="ghost" size="icon" onClick={handleMobileMenu}>
@@ -270,7 +238,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
           </div>
         </div>
       </section>
-      <MobileNavigationMenu open={open} />
+      <MobileNavigationMenu open={open} navigation={navigation} primaryButton={primaryButton} />
     </Fragment>
   );
 };
@@ -298,10 +266,10 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
   return (
     <NavigationMenuItem key={`desktop-menu-item-${index}`} value={`${index}`}>
       <NavigationMenuLink
-        href={item.url}
+        asChild
         className={`${navigationMenuTriggerStyle()} h-fit bg-yellow-600 font-black hover:bg-yellow-700 text-foreground`}
       >
-        {item.title}
+        <Link href={item.url ?? '/'}>{item.title}</Link>
       </NavigationMenuLink>
     </NavigationMenuItem>
   );
@@ -309,8 +277,8 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
 
 const MenuSubLink = ({ link }: MenuSubLinkProps) => {
   return (
-    <a
-      href={link.url}
+    <Link
+      href={link.url ?? '/'}
       className="flex items-center gap-4 rounded-lg p-2 hover:bg-muted"
     >
       <div className="flex w-full items-center justify-between">
@@ -332,11 +300,11 @@ const MenuSubLink = ({ link }: MenuSubLinkProps) => {
         </div>
         <ChevronRight className="size-3.5 stroke-muted-foreground opacity-100" />
       </div>
-    </a>
+    </Link>
   );
 };
 
-const MobileNavigationMenu = ({ open }: MobileNavigationMenuProps) => {
+const MobileNavigationMenu = ({ open, navigation, primaryButton }: MobileNavigationMenuProps) => {
   return (
     <Sheet open={open}>
       <SheetContent
@@ -353,13 +321,13 @@ const MobileNavigationMenu = ({ open }: MobileNavigationMenuProps) => {
             </div>
             <div className="flex h-full flex-col justify-between gap-20">
               <Accordion type="multiple" className="w-full">
-                {NAVIGATION.map((item, index) =>
+                {navigation.map((item, index) =>
                   renderMobileMenuItem(item, index),
                 )}
               </Accordion>
               <div className="pb-20">
                 <Button asChild className="w-full">
-                  <a href={PRIMARY_BUTTON.url}>{PRIMARY_BUTTON.label}</a>
+                  <a href={primaryButton.url}>{primaryButton.label}</a>
                 </Button>
               </div>
             </div>
@@ -387,13 +355,13 @@ const renderMobileMenuItem = (item: MenuItem, index: number) => {
   }
 
   return (
-    <a
+    <Link
       key={item.title}
-      href={item.url}
+      href={item.url ?? '/'}
       className="flex h-[3.75rem] items-center border-b p-5 uppercase hover:bg-yellow-700 text-left text-xl leading-[3.75] font-black text-muted-foreground ring-ring/10 outline-ring/50 transition-all focus-visible:ring-4 focus-visible:outline-1 nth-last-1:border-0"
     >
       {item.title}
-    </a>
+    </Link>
   );
 };
 

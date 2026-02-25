@@ -1,6 +1,7 @@
-import type { Metadata } from 'next'
-import { Playfair_Display, Lato, JetBrains_Mono } from 'next/font/google'
-import '@/src/app/(frontend)/[locale]/globals.css'
+import type { Metadata } from 'next';
+import { Playfair_Display, Lato, JetBrains_Mono } from 'next/font/google';
+import { headers } from 'next/headers';
+import '@/src/app/globals.css';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -34,22 +35,27 @@ export const metadata: Metadata = {
   },
   description:
     'Professionelle ambulante Pflege bei Ihnen zu Hause. Jetzt kostenloses Erstgespräch buchen.',
+  icons: {
+    icon: '/favicon.ico',
+  },
   keywords: ['ambulante Pflege', 'Pflegedienst', 'Häusliche Pflege', 'Pflegegrad', 'Pflegepersonal'],
   openGraph: {
     type: 'website',
     locale: 'de_DE',
-    siteName: 'Vivonia Care',
+    siteName: 'Viconia Care GmbH',
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const headersList = await headers()
+  const locale = headersList.get('x-next-intl-locale') ?? 'de'
   return (
     <html
-      lang="de"
+      lang={locale}
       suppressHydrationWarning
       className={`${playfair.variable} ${lato.variable} ${jetbrains.variable}`}
     >

@@ -31,7 +31,7 @@ export default buildConfig({
 
   // ── Database ───────────────────────────────────────────
   db: mongooseAdapter({
-    url: process.env.MONGODB_URI as string,
+    url: process.env.DATABASE_URL as string,
   }),
 
   // ── Collections ────────────────────────────────────────

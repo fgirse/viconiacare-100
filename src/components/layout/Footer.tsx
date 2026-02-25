@@ -1,5 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import LogoViconia from '@/public/images/ViconiaCareLogoobg.svg';
+import TextViconia from '@/public/images/schritzug.png';
+import LocaleSwitcher from '@/src/components/LocaleSwitcher'
+
+
+
 const SERVICES = [
   'Grundpflege', 'Behandlungspflege', 'Hauswirtschaft',
   'Begleitung', 'Demenzbetreuung', 'Palliativpflege',
@@ -12,15 +18,6 @@ const INFO_LINKS = [
   { label: 'Pflegegrade',   href: '/pflegegrade' },
   { label: 'Kostenübernahme', href: '/kosten' },
   { label: 'FAQ',           href: '/faq'      },
-]
-
-const LANGUAGES = [
-  { code: 'de', flag: '🇩🇪', label: 'DE' },
-  { code: 'en', flag: '🇬🇧', label: 'EN' },
-  { code: 'it', flag: '🇮🇹', label: 'IT' },
-  { code: 'es', flag: '🇪🇸', label: 'ES' },
-  { code: 'pt', flag: '🇵🇹', label: 'PT' },
-  { code: 'tr', flag: '🇹🇷', label: 'TR' },
 ]
 
 const SOCIALS = [
@@ -43,15 +40,15 @@ export default function Footer() {
             <div className="flex items-center gap-2.5 mb-5">
               <div className="w-20 h-20 rounded-xl bg-gradient-to-r from-transparent to-yellow-300/10 flex items-center justify-center text-xl">
                 <Image
-                src="/ViconiaCareLogoobg.svg"
+                src={LogoViconia}
                 alt="ViconiaCare Logo"
                 width={60}
                 height={60}
               />
               </div>
               <Image
-                src="/text1.png"
-                alt="ViconiaCare Logo"
+                src={TextViconia}
+                alt="ViconiaCare Logo Text"
                 width={200}
                 height={100}
               />
@@ -134,16 +131,7 @@ export default function Footer() {
           {/* Language + Emergency */}
           <div>
             <h4 className="font-display text-base font-bold text-white mb-5">Sprache</h4>
-            <div className="flex flex-wrap gap-2">
-              {LANGUAGES.map(lang => (
-                <button
-                  key={lang.code}
-                  className="px-3 py-1.5 rounded-full bg-white/6 border border-white/10 text-xs font-bold text-white/50 transition-all duration-200 hover:bg-teal-800/40 hover:border-teal-600 hover:text-teal-400 first:bg-teal-800/40 first:border-teal-600 first:text-teal-400"
-                >
-                  {lang.flag} {lang.label}
-                </button>
-              ))}
-            </div>
+            <LocaleSwitcher />
 
             <h4 className="font-display text-base font-bold text-white mt-7 mb-4">Notfall</h4>
             <Link
