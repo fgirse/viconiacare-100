@@ -4,7 +4,9 @@ import HouseOfCare from '@/public/images/Hero4.png';
 import TestimonialsSection from '@/src/components/TestimonialsSection';
 import ModalAppointment from '@/src/components/Modals/ModalAppointment';
 
-export default function Home() {
+export const dynamic = 'force-dynamic'
+
+export default async function Home() {
   return (
     <div className=" flex flex-col min-h-screen items-center justify-center font-sans dark:bg-black">
       <main className="flex flex-col min-h-screen w-full max-w-9xl items-center px-16 dark:bg-black md:items-center">

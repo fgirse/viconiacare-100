@@ -65,8 +65,7 @@ export default buildConfig({
     defaultFromAddress: 'no-reply@viconiacare.de',
     defaultFromName: 'Viconia Care GmbH',
     apiKey: process.env.RESEND_API_KEY ?? '',
-  }
-),
+  }),
 
   // ── Frontend Localization ──────────────────────────────
   localization: {
