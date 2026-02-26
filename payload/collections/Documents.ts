@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { isEditor, readOwnDocuments } from '../access/roles.ts'
+import { isEditor, readOwnDocuments } from '../access/roles'
 
 export const Documents: CollectionConfig = {
   slug: 'documents',

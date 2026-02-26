@@ -1,5 +1,5 @@
 import type { CollectionConfig, FieldAccess } from 'payload'
-import { isSuperAdmin, isAdminOrSelf } from '../access/roles.ts'
+import { isSuperAdmin, isAdminOrSelf } from '../access/roles'
 
 export type UserRole = 'superadmin' | 'admin' | 'editor' | 'user'
 

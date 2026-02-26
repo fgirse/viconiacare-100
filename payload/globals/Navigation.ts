@@ -1,5 +1,5 @@
 import type { GlobalConfig } from 'payload'
-import { isAdmin } from '../access/roles.ts'
+import { isAdmin } from '../access/roles'
 
 export const Navigation: GlobalConfig = {
   slug: 'navigation',

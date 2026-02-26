@@ -3,7 +3,8 @@ import { withPayload } from '@payloadcms/next/withPayload'
 import createNextIntlPlugin from 'next-intl/plugin'
 
 const nextConfig: NextConfig = {
-  // Ensure the next-intl Turbopack alias survives the withPayload plugin merge
+  // next-intl 3.x sets experimental.turbo (old API) but Next.js 16 uses top-level turbopack.
+  // We add the alias here so Turbopack actually picks it up.
   turbopack: {
     resolveAlias: {
       'next-intl/config': './src/i18n/request.ts',

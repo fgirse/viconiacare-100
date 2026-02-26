@@ -28,17 +28,7 @@ function StarRating({ rating }: { rating: number }) {
   )
 }
 
-const accentColors = [
-  'before:bg-amber-400',
-  'before:bg-emerald-400',
-  'before:bg-rose-400',
-]
-
-const indexDelays = ['animation-delay-0', '', 'animation-delay-200']
-
 export default function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
-  const accent = accentColors[index % accentColors.length]
-
   return (
     <article
       className={`

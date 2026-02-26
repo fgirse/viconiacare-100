@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload';
-import { isEditor, isPublic } from '../access/roles.ts';
+import { isEditor, isPublic } from '../access/roles';
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
