@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Logo_VivoniaCare from '@/public/images/ViconiaCareLogoobg.svg';
 import HouseOfCare from '@/public/images/Hero4.png';
+import TestimonialsSection from '@/src/components/TestimonialsSection';
 import ModalAppointment from '@/src/components/Modals/ModalAppointment';
 
 export default function Home() {
@@ -19,7 +20,7 @@ export default function Home() {
            <Image src={HouseOfCare} alt="House of Care" width={1600} className="p-12 "/>
            </div>
            <ModalAppointment />
-        
+            <TestimonialsSection />
            
       </main>
     </div>

@@ -1,5 +1,5 @@
 import type { CollectionConfig, FieldAccess } from 'payload'
-import { isSuperAdmin, isAdminOrSelf } from '../access/roles'
+import { isSuperAdmin, isAdminOrSelf } from '../access/roles.ts'
 
 export type UserRole = 'superadmin' | 'admin' | 'editor' | 'user'
 
@@ -121,6 +121,7 @@ export const Users: CollectionConfig = {
           collection: 'users',
           id: user.id,
           data: { lastLoginAt: new Date().toISOString() },
+          req,
         })
       },
     ],

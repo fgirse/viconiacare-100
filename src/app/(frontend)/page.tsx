@@ -1,25 +1,10 @@
-import Image from 'next/image'
-import Logo_VivoniaCare from '@/public/images/ViconiaCareLogoobg.svg'
-import HouseOfCare from '@/public/images/Hero3.png'
-import ModalAppointment from '@/src/components/Modals/ModalAppointment'
-//import ServiceSection from '@/src/components/sections/ServicesSection'
+import { redirect } from 'next/navigation'
+import { defaultLocale } from '@/src/i18n/config'
 
-export default function Home() {
-  return (
-    <div className="flex flex-col min-h-screen items-center justify-center font-sans dark:bg-black">
-      <main className="flex flex-col min-h-screen w-full max-w-9xl items-center px-16 dark:bg-black md:items-center">
-        <div className="flex-col lg:flex flex-row items-center dark:bg-black">
-          <div className="w-full md:w-2/4 flex flex-col items-center justify-center dark:bg-black">
-            <Image src={Logo_VivoniaCare} alt="ViconiaCare Logo" width={200} height={200} className="text-center p-6 size-48 md:size-52 lg:size-72" />
-          </div>
-          <h1 className="font-passionate bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400 bg-clip-text text-transparent text-[13vw] text-gray-900 dark:text-white md:text-[13vw] lg:text-[11vw]">ViconiaCare</h1>
-        </div>
-        <h1 className="bg-gradient-to-r from-zinc-600 via-zinc-500 to-zinc-200 bg-clip-text text-transparent text-center text-[10vw] leading-12 md:leading-none font-black tracking-tight dark:text-white sm:text-[8vw] md:text-[10vw] md:mt-[3vh] lg:text-[4vw] lg:mt-[-2vh]">Pflege - menschlich modern & fair</h1>
-        <div className="flex flex-col items-center mt-5 w-full dark:bg-black">
-          <Image src={HouseOfCare} alt="House of Care" width={4500} height={1800} className="p-1" />
-        </div>
-        <ModalAppointment />
-      </main>
-    </div>
+// Redirect / → /de (or whatever the default locale is)
+export default function RootPage() {
+  redirect(`/${defaultLocale}`
+
+    
   )
 }

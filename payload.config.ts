@@ -2,6 +2,10 @@ import { buildConfig } from 'payload'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // Collections
 import { Users }     from './payload/collections/Users'
@@ -11,10 +15,11 @@ import { Documents } from './payload/collections/Documents'
 import { CarePlans } from './payload/collections/CarePlans'
 import { Media }     from './payload/collections/Media'
 import { Pages }     from './payload/collections/Pages'
-
+import  Testimonials from './payload/collections/Testimonials'
+import sharp from 'sharp'
 // Globals
-import { SiteSettings } from '@/payload/globals/SiteSettings'
-import { Navigation }   from '@/payload/globals/Navigation'
+import { SiteSettings } from './payload/globals/SiteSettings'
+import { Navigation }   from './payload/globals/Navigation'
 
 export default buildConfig({
 
@@ -22,7 +27,7 @@ export default buildConfig({
   admin: {
     user:     Users.slug,
     meta: {
-      titleSuffix: '– PflegePlus Admin',
+      titleSuffix: '– Viconia Care Admin',
     },
   },
 
@@ -34,11 +39,13 @@ export default buildConfig({
     url: process.env.DATABASE_URL as string,
   }),
 
+  sharp,
+
   // ── Collections ────────────────────────────────────────
   collections: [
     Users, Patients, Staff,
     Documents, CarePlans,
-    Media, Pages,
+    Media, Pages, Testimonials
   ],
 
   // ── Globals ────────────────────────────────────────────
@@ -63,6 +70,8 @@ export default buildConfig({
     limits: { fileSize: 10_000_000 },
   },
 
+  defaultDepth: 2,
+
   // ── Security ───────────────────────────────────────────
   secret: process.env.PAYLOAD_SECRET as string,
   csrf:   [
@@ -72,7 +81,7 @@ export default buildConfig({
 
   // ── TypeScript output ──────────────────────────────────
   typescript: {
-    outputFile: path.resolve(__dirname, 'src/types/payload-types.ts'),
+    outputFile: path.resolve(__dirname, 'src/types/payload-types'),
   },
 
   graphQL: {
