@@ -12,6 +12,7 @@ export async function getFeaturedTestimonials(): Promise<Testimonial[]> {
     },
     limit: 3,
     sort: '-createdAt',
+    depth: 1,
   })
 
   // Cast to our local Testimonial type

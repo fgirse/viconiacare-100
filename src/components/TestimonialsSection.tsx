@@ -18,7 +18,7 @@ export default async function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative w-full bg-teal-600 py-28 px-6 overflow-hidden"
+      className="relative w-[100vw] bg-teal-900 py-28 px-6 overflow-hidden"
       aria-labelledby="testimonials-heading"
     >
       {/* Ambient background glow */}
@@ -26,11 +26,11 @@ export default async function TestimonialsSection() {
         className="pointer-events-none absolute inset-0 -z-0"
         aria-hidden="true"
       >
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-400/30 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl">
+      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-16 max-w-xl">
           <p className="text-amber-400 text-xs font-semibold tracking-[0.3em] uppercase mb-4">
@@ -62,7 +62,7 @@ export default async function TestimonialsSection() {
         </div>
 
         {/* Footer note */}
-        <p className="mt-12 text-center text-stone-600 text-sm tracking-wide">
+        <p className="mt-12 text-center text-stone-400 text-sm tracking-wide">
           Treffen Sie uns und teilen Sie Ihre Geschichte – wir freuen uns darauf, von Ihnen zu hören!
         </p>
       </div>

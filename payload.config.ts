@@ -3,6 +3,14 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { de } from '@payloadcms/translations/languages/de'
+import { en } from '@payloadcms/translations/languages/en'
+import { fr } from '@payloadcms/translations/languages/fr'
+import { it } from '@payloadcms/translations/languages/it'
+import { es } from '@payloadcms/translations/languages/es'
+import { pt } from '@payloadcms/translations/languages/pt'
+import { tr } from '@payloadcms/translations/languages/tr'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -20,6 +28,7 @@ import sharp from 'sharp'
 // Globals
 import { SiteSettings } from './payload/globals/SiteSettings'
 import { Navigation }   from './payload/globals/Navigation'
+
 
 export default buildConfig({
 
@@ -51,6 +60,14 @@ export default buildConfig({
   // ── Globals ────────────────────────────────────────────
   globals: [SiteSettings, Navigation],
 
+  // ── email ────────────────────────────────────────────
+  email: resendAdapter({
+    defaultFromAddress: 'no-reply@viconiacare.de',
+    defaultFromName: 'Viconia Care GmbH',
+    apiKey: process.env.RESEND_API_KEY ?? '',
+  }
+),
+
   // ── Frontend Localization ──────────────────────────────
   localization: {
     locales: [
@@ -64,6 +81,12 @@ export default buildConfig({
     defaultLocale: 'de',
     fallback:      true,
   },
+  // ── i18n ─────────────────────────────────────────────
+  i18n: { supportedLanguages: { de, en, fr, it, es, pt, tr }, fallbackLanguage: 'de' },
+
+    // ── Server URL ─────────────────────────────────────────────
+serverURL: process.env.SERVER_URL || '',
+
 
   // ── Upload ─────────────────────────────────────────────
   upload: {
