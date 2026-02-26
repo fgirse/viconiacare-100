@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'http',  hostname: 'localhost' },
+      { protocol: 'https', hostname: 'viconiacare.de' },
+      { protocol: 'https', hostname: '*.viconiacare.de' },
       { protocol: 'https', hostname: 'res.cloudinary.com' },
       { protocol: 'https', hostname: '**.amazonaws.com' },
       { protocol: 'https', hostname: '**.cloudfront.net' },

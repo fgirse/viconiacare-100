@@ -84,7 +84,7 @@ export default buildConfig({
   i18n: { supportedLanguages: { de, en, fr, it, es, pt, tr }, fallbackLanguage: 'de' },
 
     // ── Server URL ─────────────────────────────────────────────
-serverURL: process.env.SERVER_URL || '',
+serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
 
 
   // ── Upload ─────────────────────────────────────────────
