@@ -18,7 +18,7 @@ export default async function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative w-[100vw] bg-teal-900 py-28 px-6 overflow-hidden"
+      className="relative top-[20vh] w-[100vw] bg-teal-900 py-28 px-6 overflow-hidden"
       aria-labelledby="testimonials-heading"
     >
       {/* Ambient background glow */}

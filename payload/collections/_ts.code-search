@@ -1,0 +1,59 @@
+# Query: .ts
+
+30 results - 13 files
+
+.gitignore:
+  40: *.tsbuildinfo
+  41: next-env.d.ts
+
+eslint.config.mjs:
+  14:     "next-env.d.ts",
+
+next.config.ts:
+   9:       'next-intl/config': './src/i18n/request',
+  48: const withNextIntl = createNextIntlPlugin('./src/i18n/request')
+
+README copy.md:
+  89: ├── payload.config.ts   # Payload Konfiguration
+  90: ├── next.config.ts      # Next.js Konfiguration
+  91: ├── tailwind.config.ts  # Design System
+  92: └── middleware.ts       # i18n Routing
+
+README.md:
+  19: You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+tsconfig.json:
+  23:       "@payload-config": ["./payload.config.ts"]
+  27:     "next-env.d.ts",
+  28:     "**/*.ts",
+  29:     "**/*.tsx",
+  30:     ".next/types/**/*.ts",
+  31:     ".next/dev/types/**/*.ts",
+
+payload/README.md:
+   7: │   └── Testimonials.ts          # Payload CMS collection config
+   9: │   └── testimonial.ts           # TypeScript interfaces
+  11: │   └── getTestimonials.ts       # Data fetching + seed fallback data
+  13: │   ├── TestimonialsSection.tsx  # Server Component — layout & data loading
+  14: │   └── TestimonialCard.tsx      # Client Component — individual card UI
+  16:     └── page.tsx                 # Example usage
+  23: In your `payload.config.ts`:
+  69: > **Development fallback**: If Payload is unreachable, `seedTestimonials` in `lib/getTestimonials.ts` are used automatically — no empty states during local dev.
+
+payload/collections/Media.ts:
+  2: import { isEditor, isPublic } from '../access/roles.ts'
+
+payload/collections/Patients.ts:
+  2: import { isAdmin, isEditor, isAdminOrSelf } from '../access/roles.ts'
+
+payload/collections/Staff.ts:
+  2: import { isAdmin, isEditor } from '../access/roles.ts'
+
+payload/collections/Users.ts:
+  2: import { isSuperAdmin, isAdminOrSelf } from '../access/roles.ts'
+
+payload/globals/Navigation.ts:
+  2: import { isAdmin } from '../access/roles.ts'
+
+payload/globals/SiteSettings.ts:
+  2: import { isAdmin } from '../access/roles'
