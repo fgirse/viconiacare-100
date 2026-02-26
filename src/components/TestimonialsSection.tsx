@@ -1,19 +1,20 @@
-import { getFeaturedTestimonials, seedTestimonials } from '@/src/lib/getTestimonials'
+import { getFeaturedTestimonials } from '@/src/lib/getTestimonials'
 import { Testimonial } from '@/src/types/testimonial'
 import TestimonialCard from './TestimonialCard'
 
 async function loadTestimonials(): Promise<Testimonial[]> {
   try {
-    const data = await getFeaturedTestimonials()
-    return data.length > 0 ? data : seedTestimonials
+    return await getFeaturedTestimonials()
   } catch (err) {
     console.error('[TestimonialsSection] Failed to load testimonials:', err)
-    return seedTestimonials
+    return []
   }
 }
 
 export default async function TestimonialsSection() {
   const testimonials = await loadTestimonials()
+
+  if (testimonials.length === 0) return null
 
   return (
     <section
