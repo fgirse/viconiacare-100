@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { Playfair_Display, Lato, Bowlby_One_SC } from 'next/font/google';
 import { locales } from '@/src/i18n/config';
 import { Navbar9 } from "@/src/components/navbar9";
+import Trustbar from '@/src/components/Trustbar'
 import Footer from "@/src/components/layout/Footer";
 
 const playfair = Playfair_Display({
@@ -46,6 +47,7 @@ export default async function LocaleLayout({
     <div className={`${playfair.variable} ${lato.variable} ${bowlby.variable} font-body bg-white text-stone-900`}>
       <NextIntlClientProvider locale={locale} messages={messages}>
         <Navbar9 />
+        <Trustbar />
         {children}
         <Footer />
       </NextIntlClientProvider>

@@ -8,7 +8,7 @@
 :root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-display);
   --font-mono: var(--font-bowlby);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
