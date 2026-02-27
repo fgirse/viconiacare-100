@@ -24,6 +24,7 @@ import { CarePlans } from './payload/collections/CarePlans'
 import { Media }     from './payload/collections/Media'
 import { Pages }     from './payload/collections/Pages'
 import  Testimonials from './payload/collections/Testimonials'
+import Services from '@/payload/collections/Services'
 import sharp from 'sharp'
 // Globals
 import { SiteSettings } from './payload/globals/SiteSettings'
@@ -54,7 +55,7 @@ export default buildConfig({
   collections: [
     Users, Patients, Staff,
     Documents, CarePlans,
-    Media, Pages, Testimonials
+    Media, Pages, Services, Testimonials
   ],
 
   // ── Globals ────────────────────────────────────────────

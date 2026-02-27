@@ -3,6 +3,7 @@ import Logo_VivoniaCare from '@/public/images/ViconiaCareLogoobg.svg';
 import HouseOfCare from '@/public/images/Hero4.png';
 import TestimonialsSection from '@/src/components/TestimonialsSection';
 import ModalAppointment from '@/src/components/Modals/ModalAppointment';
+import ServicesSection from '@/components/ServicesSection'
 
 export const dynamic = 'force-dynamic'
 
@@ -22,6 +23,7 @@ export default async function Home() {
            <Image src={HouseOfCare} alt="House of Care" width={1600} className="bg-stone-100 rounded-xl  p-5 "/>
            </div>
            <ModalAppointment />
+            <ServicesSection />
             <TestimonialsSection />
            
       </main>
