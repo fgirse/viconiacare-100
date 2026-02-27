@@ -19,7 +19,7 @@ export default async function ServicesSection() {
     <section
       id="leistungen"
       aria-labelledby="services-heading"
-      className="relative w-[100vw] bg-stone-50 py-28 px-6 overflow-hidden"
+      className="mb-24relative w-[100vw] bg-stone-50 py-28 px-6 overflow-hidden"
     >
       {/* Decorative background shapes */}
       <div className="pointer-events-none absolute inset-0 -z-0 overflow-hidden" aria-hidden="true">

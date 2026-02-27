@@ -19,7 +19,7 @@ export default async function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative top-[20vh] w-[100vw] bg-teal-900 py-28 px-6 overflow-hidden"
+      className="mb-[20vh] relative top-[20vh] w-[100vw] bg-teal-800/60 py-28 px-6 overflow-hidden"
       aria-labelledby="testimonials-heading"
     >
       {/* Ambient background glow */}
@@ -63,7 +63,7 @@ export default async function TestimonialsSection() {
         </div>
 
         {/* Footer note */}
-        <p className="mt-12 text-center text-stone-400 text-sm tracking-wide">
+        <p className="mt-12 text-center text-stone-200 text-sm tracking-wide">
           Treffen Sie uns und teilen Sie Ihre Geschichte – wir freuen uns darauf, von Ihnen zu hören!
         </p>
       </div>
