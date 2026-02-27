@@ -42,7 +42,7 @@ const Example = () => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
     
-          <Image src={TerminButton} alt="Termin Button" width={200} height={200} className="absolute w-36 top-[80vh] right-1  cursor-pointer absolute top-60 md:w-36 md:top-24 md:right-12 lg:w-54" />
+          <Image src={TerminButton} alt="Termin Button" width={200} height={200} className="z-50 absolute w-36 top-[80vh] right-1  cursor-pointer absolute top-60 md:w-36 md:top-24 md:right-12 lg:w-54" />
     
       </AlertDialogTrigger>
       <AlertDialogContent>

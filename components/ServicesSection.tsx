@@ -1,7 +1,7 @@
 import { getActiveServices, seedServices } from '@/src/lib/getServices'
 import { Service } from '@/src/types/service'
 import ServiceCard from './ServiceCard'
-import { Link } from '@/src/i18n/navigation'                                                                                               
+import { Link } from 'lucide-react'
 
 async function loadServices(): Promise<Service[]> {
   try {
@@ -19,7 +19,7 @@ export default async function ServicesSection() {
     <section
       id="leistungen"
       aria-labelledby="services-heading"
-      className="relative w-full bg-stone-50 py-28 px-6 overflow-hidden"
+      className="relative w-[100vw] bg-stone-50 py-28 px-6 overflow-hidden"
     >
       {/* Decorative background shapes */}
       <div className="pointer-events-none absolute inset-0 -z-0 overflow-hidden" aria-hidden="true">
@@ -69,15 +69,15 @@ export default async function ServicesSection() {
           >
             Ambulante Pflege –{' '}
             <span
-              className="relative inline-block"
+              className="relative inline-block text-yellow-600"
               style={{
-                background: 'linear-gradient(135deg, #ca8a04 0%, #10b981 100%)',
+                background: 'linear-gradient(135deg, #f0a608ff 0%, #e9e209b1 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}
             >
-              persönlich &amp; professionell
+              persönlich und professionell
             </span>
           </h2>
 

@@ -20,7 +20,7 @@ export default async function Home() {
        </div>
        <h1 className="bg-gradient-to-r from-zinc-600 via-zinc-500 to-zinc-200 bg-clip-text text-transparent text-center text-[10vw] leading-12 md:leading-none font-black tracking-tight dark:text-white sm:text-[8vw] md:text-[7vw] md:mt-[0vh] lg:text-[3.66rem] lg:mt-[-4vh]">Pflege - menschlich modern & fair </h1>
            <div className="flex flex-col items-center mt-8 w-[95vw] md:w-[89vw] lg:w-[60vw] bg-stone-50 dark:bg-black">
-           <Image src={HouseOfCare} alt="House of Care" width={1600} className="bg-stone-100 rounded-xl  p-5 "/>
+           <Image src={HouseOfCare} alt="House of Care" width={1600} className="bg-stone-50 rounded-xl  p-5 "/>
            </div>
            <ModalAppointment />
             <ServicesSection />
