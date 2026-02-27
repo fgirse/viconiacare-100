@@ -30,12 +30,15 @@ import sharp from 'sharp'
 import { SiteSettings } from './payload/globals/SiteSettings'
 import { Navigation }   from './payload/globals/Navigation'
 
+// Image storage with Vercel Blob
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+
+
 
 export default buildConfig({
-
   // ── Admin ──────────────────────────────────────────────
   admin: {
-    user:     Users.slug,
+    user: Users.slug,
     meta: {
       titleSuffix: '– Viconia Care Admin',
     },
@@ -71,33 +74,41 @@ export default buildConfig({
   // ── Frontend Localization ──────────────────────────────
   localization: {
     locales: [
-      { label: 'Deutsch',   code: 'de' },
-      { label: 'English',   code: 'en' },
-      { label: 'Italiano',  code: 'it' },
-      { label: 'Español',   code: 'es' },
+      { label: 'Deutsch', code: 'de' },
+      { label: 'English', code: 'en' },
+      { label: 'Italiano', code: 'it' },
+      { label: 'Español', code: 'es' },
       { label: 'Português', code: 'pt' },
-      { label: 'Türkçe',    code: 'tr' },
+      { label: 'Türkçe', code: 'tr' },
     ],
     defaultLocale: 'de',
-    fallback:      true,
+    fallback: true,
   },
   // ── i18n ─────────────────────────────────────────────
   i18n: { supportedLanguages: { de, en, fr, it, es, pt, tr }, fallbackLanguage: 'de' },
 
-    // ── Server URL ─────────────────────────────────────────────
-serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  // ── Server URL ─────────────────────────────────────────────
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
 
 
   // ── Upload ─────────────────────────────────────────────
   upload: {
-    limits: { fileSize: 10_000_000 },
+    limits: { fileSize: 10000000 },
   },
 
   defaultDepth: 2,
 
+  // ── PluginsStorage ─────────────────────────────────────────────
+  plugins: [
+    vercelBlobStorage({
+      collections: { media: true },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    }),
+  ],
+
   // ── Security ───────────────────────────────────────────
   secret: process.env.PAYLOAD_SECRET as string,
-  csrf:   [
+  csrf: [
     process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
     'http://localhost:3000',
   ],

@@ -19,7 +19,7 @@ export default async function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="mb-[20vh] relative top-[20vh] w-[100vw] bg-teal-800/60 py-28 px-6 overflow-hidden"
+      className="mb-[1vh] relative top-[1vh] w-[100vw] bg-teal-800/60 py-28 px-6 overflow-hidden"
       aria-labelledby="testimonials-heading"
     >
       {/* Ambient background glow */}
@@ -46,7 +46,7 @@ export default async function TestimonialsSection() {
               echten Familien
             </span>
           </h2>
-          <p className="mt-5 text-stone-400 text-lg leading-relaxed font-light">
+          <p className="mt-5 text-stone-200 text-lg leading-relaxed font-light">
             Jede Familie hat ihre einzigartige Geschichte. Hier sind einige der Geschichten, die wir teilen dürfen.
           </p>
         </div>

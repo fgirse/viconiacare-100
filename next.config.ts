@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: '**.amazonaws.com' },
       { protocol: 'https', hostname: '**.cloudfront.net' },
       { protocol: 'https', hostname: 'cal.com' },
+      { protocol: 'https', hostname: '*.public.blob.vercel-storage.com' },
     ],
     formats: ['image/avif', 'image/webp'],
   },
