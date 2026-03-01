@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
   ),
   title: {
-    default: 'Vivonia Care – Ambulanter Pflegedienst',
-    template: '%s | Vivonia Care',
+    default: 'Viconia Care – Ambulanter Pflegedienst',
+    template: '%s | ViconiaCare GmbH',
   },
   description:
     'Professionelle ambulante Pflege bei Ihnen zu Hause. Jetzt kostenloses Erstgespräch buchen.',
