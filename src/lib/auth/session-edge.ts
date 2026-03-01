@@ -30,7 +30,7 @@ export async function getSessionFromRequest(
   if (!token) return null
   try {
     const { payload } = await jwtVerify(token, getSecret())
-    return payload as SessionPayload
+    return payload as unknown as SessionPayload
   } catch {
     return null
   }

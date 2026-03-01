@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
-import { useAuthState } from '@/hooks/useAuth'
+import { cn } from '@/src/lib/utils/utils'
+import { useAuthState } from '@/src/hooks/useAuth'
 
 const NAV = [
   { href: '/de/admin',          icon: '◈',  label: 'Übersicht',           exact: true },
@@ -53,10 +53,10 @@ export default function AdminSidebar() {
 
         {/* Nav */}
         <nav className="flex-1 py-5 px-2.5 flex flex-col gap-0.5">
-          {NAV.map((item, i) => {
-            const active = isActive(item.href, item.exact)
-            return (
-              <div key={item.href}>
+          {NAV.map((item) => {
+              const active = isActive(item.href, item.exact)
+              return (
+                <div key={item.href}>
                 {item.divider && (
                   <div className="my-2 border-t border-stone-800/60" />
                 )}

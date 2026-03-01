@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/src/lib/utils/utils'
 
 // ── Page header ───────────────────────────────────────────────────────────────
 export function AdminHeader({

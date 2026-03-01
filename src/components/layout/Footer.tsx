@@ -1,6 +1,5 @@
 import { Link } from '@/src/i18n/navigation'
-import type { routing } from '@/src/i18n/routing'
-type AppPathname = keyof typeof routing.pathnames
+type AppPathname = string
 import Image from 'next/image'
 import LogoViconia from '@/public/images/ViconiaCareLogoobg.svg';
 //import TextViconia from '@/public/images/schritzug.png';
