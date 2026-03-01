@@ -57,6 +57,7 @@ export interface Patient {
   emergencyContact: EmergencyContact
   insuranceInfo:    InsuranceInfo
   userAccount?:     string | User
+  assignedStaff?:   StaffMember[]
   status:           PatientStatus
   notes?:           string
   createdAt:        string

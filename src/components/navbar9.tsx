@@ -159,7 +159,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
     { title: t("contact"), url: "/contact" },
   ];
 
-  const primaryButton = { label: t("signup"), url: "#" };
+  const primaryButton = { label: t("login"), url: "/login" };
 
   const [open, setOpen] = useState<boolean>(false);
 

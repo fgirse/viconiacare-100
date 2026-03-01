@@ -42,7 +42,7 @@ export default async function TestimonialsSection() {
             className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight"
           >
             Reale Geschichten von{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-yellow-400">
+            <span className="font-passionate text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-yellow-400">
               echten Familien
             </span>
           </h2>

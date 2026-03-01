@@ -3,7 +3,7 @@ import type { routing } from '@/src/i18n/routing'
 type AppPathname = keyof typeof routing.pathnames
 import Image from 'next/image'
 import LogoViconia from '@/public/images/ViconiaCareLogoobg.svg';
-import TextViconia from '@/public/images/schritzug.png';
+//import TextViconia from '@/public/images/schritzug.png';
 import LocaleSwitcher from '@/src/components/LocaleSwitcher'
 
 // ── SVG Icons (duotone yellow-600 / white) ───────────────────────────
@@ -92,7 +92,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-20 h-20 rounded-xl bg-gradient-to-r from-transparent to-yellow-300/10 flex items-center justify-center text-xl">
+              <div className="w-20 h-20 rounded-xl  flex items-center justify-center text-xl">
                 <Image
                 src={LogoViconia}
                 alt="ViconiaCare Logo"
@@ -100,12 +100,8 @@ export default function Footer() {
                 height={60}
               />
               </div>
-              <Image
-                src={TextViconia}
-                alt="ViconiaCare Logo Text"
-                width={200}
-                height={100}
-              />
+              <p className='font-passionate text-[2.2rem] text-yellow-500'>ViconiaCare GmbH
+             </p> 
             </div>
 
             <p className="text-sm leading-relaxed text-white/45 max-w-[280px] mb-7 font-light">

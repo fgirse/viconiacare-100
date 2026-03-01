@@ -4,6 +4,7 @@ import HouseOfCare from '@/public/images/Hero4.png';
 import TestimonialsSection from '@/src/components/TestimonialsSection';
 import ModalAppointment from '@/src/components/Modals/ModalAppointment';
 import ServicesSection from '@/components/ServicesSection'
+import WhyUsSection from '@/src/components/WhyUsSection';
   
 export const dynamic = 'force-dynamic'
 
@@ -24,7 +25,8 @@ export default async function Home() {
            </div>
            <ModalAppointment />
             <ServicesSection />
-            <TestimonialsSection />
+            <WhyUsSection />
+            <TestimonialsSection/>
            
       </main>
     </div>
