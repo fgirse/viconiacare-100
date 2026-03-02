@@ -75,6 +75,7 @@ export default function TestimonialCard({ testimonial, index }: TestimonialCardP
               src={testimonial.avatar.url}
               alt={testimonial.familyName}
               fill
+              sizes="48px"
               className="object-cover"
             />
           </div>

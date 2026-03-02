@@ -103,6 +103,10 @@ export default buildConfig({
     vercelBlobStorage({
       collections: { media: true },
       token: process.env.BLOB_READ_WRITE_TOKEN,
+      // Bypass Vercel's 4.5 MB serverless body limit:
+      // the browser uploads directly to Vercel Blob instead of routing
+      // through the Next.js API function.
+      clientUploads: true,
     }),
   ],
 

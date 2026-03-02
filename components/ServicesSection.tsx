@@ -50,7 +50,7 @@ export default async function ServicesSection() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl">
+      <div className="relative top-24 z-10 mx-auto max-w-7xl">
 
         {/* Header */}
         <div className="max-w-2xl mb-16">

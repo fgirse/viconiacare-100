@@ -190,7 +190,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
     <Fragment>
       <section
         className={cn(
-          "dark pointer-events-auto relative z-999 bg-gradient-to-r from-slate-800 via-slate-600 to-slate-900 backdrop-blur-lg transition-colors duration-300 lg:bg-",
+          "dark pointer-events-auto relative z-999 bg-gradient-to-r from-stone-800 via-stone-600 to-stone-900 backdrop-blur-lg transition-colors duration-300 lg:bg-",
           className,
         )}
       >

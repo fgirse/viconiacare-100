@@ -34,7 +34,7 @@ export default function BookingSection() {
           {EVENT_TYPES.map((event) => (
             <BookingCard
               key={event.id}
-              icon={event.icon}
+              id={event.id}
               tag={event.tag}
               title={event.title}
               description={event.description}
