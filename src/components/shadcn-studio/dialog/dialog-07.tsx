@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/dialog'
 
 import TerminButton from "@/public/images/buttonGruenobg.svg";
-import BookingSection from "@/src/components/sections/BookingSection";
+import BookingSection from "@/src/components/booking/BookingSection";
 
 const DialogFullScreenDemo = () => {
   return (

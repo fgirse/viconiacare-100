@@ -9,7 +9,7 @@ import {
 } from "@/src/components/ui/alert-dialog";
 import Image from "next/image";
 import TerminButton from "@/public/images/buttonGruenobg.svg";
-import BookingSection from "../sections/BookingSection";
+import BookingSection from "@/src/components/booking/BookingSection";
 
 export const title = "Form with Radio Group";
 

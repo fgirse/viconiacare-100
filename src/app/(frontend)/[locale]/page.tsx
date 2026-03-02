@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Logo_VivoniaCare from '@/public/images/ViconiaCareLogoobg.svg';
 import HouseOfCare from '@/public/images/Hero4.png';
 import TestimonialsSection from '@/src/components/TestimonialsSection';
-import ModalAppointment from '@/src/components/Modals/ModalAppointment';
+import Dialog7 from '@/src/components/shadcn-studio/dialog/dialog-07';
 import BookingSection from '@/src/components/booking/BookingSection';
 import ServicesSection from '@/components/ServicesSection'
 import WyUsSection from '@/src/components/WhyUsSection';
@@ -25,7 +25,7 @@ export default async function Home() {
            <div className="flex flex-col items-center mt-8 w-[95vw] md:w-[89vw] lg:w-[60vw] bg-stone-50 dark:bg-black">
            <Image src={HouseOfCare} alt="House of Care" width={1600} className="bg-stone-50 rounded-xl  p-5 "/>
            </div>
-           <ModalAppointment />
+           <Dialog7 />
             <ServicesSection />
             <WyUsSection />
             <BookingSection/>
