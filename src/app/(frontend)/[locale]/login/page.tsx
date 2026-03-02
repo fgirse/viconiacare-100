@@ -3,6 +3,8 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
+import Logo_VivoniaCare from '@/public/images/ViconiaCareLogoobg.svg';
 import { cn } from '@/src/lib/utils/utils';
 
 export default function LoginPage() {
@@ -55,19 +57,17 @@ export default function LoginPage() {
 
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-2xl bg-white/10 backdrop-blur flex items-center justify-center text-2xl">
-            🫀
-          </div>
-          <span className="font-display text-2xl font-black text-white">
-            Pflege<span className="text-orange-400">Plus</span>
-          </span>
+          <Image  src={Logo_VivoniaCare} alt="ViconiaCare Logo" className="w-9 h-9 rounded-xl flex items-center justify-center text-xl"/>
+          <span className="font-passionate text-2xl md:text-4xl font-black text-yellow-500">
+              ViconiaCare GmbH
+            </span>
         </div>
 
         {/* Main copy */}
         <div>
           <h2 className="font-display text-[2.6rem] font-black text-white leading-[1.1] mb-5">
             Ihr persönlicher<br />
-            <span className="text-orange-400 italic">Pflegebereich</span>
+            <span className="text-yellow-500 italic">Pflegebereich</span>
           </h2>
           <p className="text-white/55 text-[1.05rem] leading-relaxed mb-10">
             Verwalten Sie Ihre Termine, Dokumente und Ihren Pflegeplan – sicher und jederzeit verfügbar.
@@ -103,9 +103,9 @@ export default function LoginPage() {
 
           {/* Mobile logo */}
           <div className="flex items-center gap-2.5 mb-10 lg:hidden">
-            <div className="w-9 h-9 rounded-xl bg-teal-600 flex items-center justify-center text-xl">🫀</div>
-            <span className="font-display text-xl font-black text-teal-900">
-              Pflege<span className="text-orange-500">Plus</span>
+            <Image  src={Logo_VivoniaCare} alt="ViconiaCare Logo" className="w-9 h-9 rounded-xl flex items-center justify-center text-xl"/>
+            <span className="font-passionate text-2xl md:text-4xl font-black text-yellow-600">
+              ViconiaCare GmbH
             </span>
           </div>
 

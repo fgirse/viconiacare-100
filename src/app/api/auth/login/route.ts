@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { createSession, setSessionCookie } from '@/src/lib/auth/session'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 
 const LoginSchema = z.object({
   email:    z.string().email(),
@@ -59,6 +61,22 @@ export async function POST(req: NextRequest) {
     )
   }
 
+  // ── Look up linked patient record (relationship is on Patient side) ────────
+  let patientId: string | undefined
+  try {
+    const payload = await getPayload({ config: configPromise })
+    const patResult = await payload.find({
+      collection: 'patients',
+      where: { userAccount: { equals: payloadUser.id } },
+      limit: 1,
+      depth: 0,
+      overrideAccess: true,
+    })
+    patientId = patResult.docs?.[0]?.id as string | undefined
+  } catch (err) {
+    console.warn('[/api/auth/login] Could not resolve patientId:', err)
+  }
+
   // ── Create JWT session ─────────────────────────────────────────
   const token = await createSession({
     userId:    payloadUser.id,
@@ -66,7 +84,7 @@ export async function POST(req: NextRequest) {
     role:      payloadUser.role ?? 'user',
     firstName: payloadUser.firstName,
     lastName:  payloadUser.lastName,
-    patientId: payloadUser.patientId,   // if linked
+    patientId,
   })
 
   const response = NextResponse.json({

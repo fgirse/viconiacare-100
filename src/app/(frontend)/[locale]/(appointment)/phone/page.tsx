@@ -26,7 +26,7 @@ export default function MyApp() {
   return (
     <Cal
       namespace="phone"
-      calLink="frank-girse-rjljth/phone"
+      calLink="cal.eu/viconiacare/info-telefonat"
       style={{ width: "100%", height: "100%", overflow: "scroll" }}
       config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true" }}
     />

@@ -5,6 +5,7 @@ import { locales } from '@/src/i18n/config';
 import { Navbar9 } from "@/src/components/navbar9";
 import Trustbar from '@/src/components/Trustbar'
 import Footer from "@/src/components/layout/Footer";
+import BackToTop from "@/src/components/ui/BackToTop";
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -50,6 +51,7 @@ export default async function LocaleLayout({
         <Trustbar />
         {children}
         <Footer />
+        <BackToTop />
       </NextIntlClientProvider>
     </div>
   );

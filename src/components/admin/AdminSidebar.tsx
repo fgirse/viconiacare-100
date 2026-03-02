@@ -36,7 +36,7 @@ export default function AdminSidebar() {
           'flex items-center gap-3 border-b border-stone-800/80',
           collapsed ? 'px-4 py-5 justify-center' : 'px-5 py-5',
         )}>
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-base flex-shrink-0 font-black text-white">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-base flex-shrink-0 font-black text-white">
             +
           </div>
           {!collapsed && (

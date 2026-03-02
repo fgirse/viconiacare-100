@@ -14,7 +14,7 @@ interface UseSlotsReturn {
   loading:   boolean
   error:     string | null
   refetch:   () => void
-  /** Slots grouped by date string "YYYY-MM-DD" (keyed by slot.time) */
+  /** Slots grouped by date string "YYYY-MM-DD" (keyed by slot.start) */
   byDate:    Record<string, CalSlot[]>
 }
 
@@ -73,7 +73,7 @@ export function useCalSlots({
 
   // Group slots by date
   const byDate = slots.reduce<Record<string, CalSlot[]>>((acc, slot) => {
-    const date = slot.time.split('T')[0] // "YYYY-MM-DD"
+    const date = slot.start.split('T')[0] // "YYYY-MM-DD"
     if (!acc[date]) acc[date] = []
     acc[date].push(slot)
     return acc

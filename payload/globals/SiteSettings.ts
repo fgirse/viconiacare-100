@@ -4,7 +4,7 @@ import { isAdmin } from '../access/roles'
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
   label: 'Website-Einstellungen',
-  admin: { group: 'Einstellungen' },
+  admin: { group: 'Globals' },
   access: { read: () => true, update: isAdmin },
   fields: [
     { name: 'siteName', type: 'text',   label: 'Firmenname', defaultValue: 'PflegePlus' },

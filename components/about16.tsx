@@ -1,8 +1,31 @@
-'use client'
+import React from "react";
+import Image from "next/image";
+import Hände from "@/public/images/g17.svg";
 
-import { useEffect } from 'react'
-import Image from 'next/image'
-import LeitbildImage from '../../public/images/g17.svg'
+import { cn } from "@/src/lib/utils/utils";
+
+const stats = [
+  {
+    number: "80K+",
+    description:
+      "From 80K+ users reached to 20+ startups supported, these numbers reflect the scale, impact, and consistency of my work.",
+  },
+  {
+    number: "20+",
+    description:
+      "Startups supported with innovative solutions and strategic guidance to help them scale and succeed in their markets.",
+  },
+  {
+    number: "95%",
+    description:
+      "Client satisfaction rate achieved through dedicated support, quality deliverables, and long-term partnerships built on trust.",
+  },
+];
+
+interface About16Props {
+  className?: string;
+}
+
 /* ── Handmade duotone SVG icons (yellow-600 / white) ──────────────── */
 
 function IconTarget() {
@@ -102,68 +125,20 @@ const FEATURES = [
   {
     Icon: IconGlobe,
     title: 'Mehrsprachiges Team',
-    desc: 'Wir sprechen Ihre Sprache – auf Deutsch, Englisch, Französisch, Italienisch, Spanisch, Portugiesisch und Türkisch.',
+    desc: 'Wir sprechen Ihre Sprache – auf Deutsch, Englisch, Italienisch, Spanisch, Portugiesisch und Türkisch.',
   },
 ]
 
-export default function WhyUsSection() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('opacity-100', 'translate-y-0')
-            observer.unobserve(e.target)
-          }
-        })
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    )
-    document.querySelectorAll('.reveal-why').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-
+const About16 = ({ className }: About16Props) => {
   return (
-    <section id="why-us" className="w-[100vw] py-[120px] px-6 bg-stone-50 scroll-mt-[72px]">
-      <div className="max-w-[100vw] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-
-        {/* ── Visual (left on lg) ────────────────────────────────── */}
-        <div className="reveal-why opacity-0 translate-y-7 transition-all duration-700 relative lg:block">
-          {/* Main visual */}
-          <div className="w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden relative">
-            <Image
-              src={LeitbildImage}
-              alt="Pflegesituation – professionelle Betreuung"
-              fill
-              className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-            {/* subtle colour overlay for brand feel */}
-            <div className="absolute inset-0 bg-transparent" />
+    <section className={cn("py-32", className)}>
+      <div className="container">
+        <div className="grid grid-cols-1 gap-20 lg:grid-cols-6">
+          <div className="top-10 col-span-2 flex h-fit w-fit items-center gap-3 lg:sticky">
+            <span className="size-2 bg-orange-500" />
+            <p className="text-foreground/30 uppercase">Why us?</p>
           </div>
-
-          {/* Stat card 1 */}
-          <div className="absolute -bottom-[-4vh] md:left-[10vw] lg:left-[80vw] bg-white rounded-2xl px-5 py-4 shadow-xl flex items-center gap-3">
-            
-            <div>
-              <div className="font-display md:text-[6.8rem] lg:text-[6.4rem] font-black text-yellow-600 leading-none">MDK</div>
-              <div className="text-[0.75rem] font-bold uppercase tracking-wider text-stone-500 mt-0.5">Sehr gut</div>
-            </div>
-          </div>
-
-          {/* Stat card 2 */}
-          <div className="absolute top-[-12vh] lg:top-[-10vh] right-8  bg-white rounded-2xl px-5 py-4 shadow-xl flex items-center gap-3">
-          
-            <div>
-              <div className=" uppercase text-[3.0rem] md:text-[7.0rem] font-display lg:text-[5.4rem] font-black text-yellow-600 leading-none">Start März 2026 </div>
-              <div className="text-[0.75rem] font-bold uppercase tracking-wider text-stone-500 mt-0.5">neu in Hamburg</div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Content (right) ────────────────────────────────────── */}
-        <div>
+         
           <div className="reveal-why opacity-0 translate-y-7 transition-all duration-700 delay-75 flex items-center gap-2 text-[0.75rem] font-bold uppercase tracking-[0.15em] text-teal-600 mb-4">
             <span className="w-6 h-[2px] bg-teal-500 rounded" />
             Warum wir?
@@ -196,7 +171,32 @@ export default function WhyUsSection() {
             ))}
           </div>
         </div>
-      </div>
+
+       
+
+            <div className="relative h-110 w-full">
+              <Image
+                src={Hände}
+                alt="Hände"
+                fill
+                className="pointer-events-none object-cover"
+              />
+            </div>
+            <ul className="mt-14">
+              {stats.map((stat, index) => (
+                <li key={index} className="grid grid-cols-5 border-b py-8">
+                  <h3 className="col-span-2 text-4xl font-medium">
+                    {stat.number}
+                  </h3>
+                  <p className="col-span-3">{stat.description}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+      
+    
     </section>
-  )
-}
+  );
+};
+
+export { About16 };

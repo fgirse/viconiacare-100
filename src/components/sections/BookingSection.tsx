@@ -7,7 +7,6 @@ import CalWidget from '@/src/components/booking/CalWidget'
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface BookingType {
   id: string
-  calSlug: string    // Cal.com event type slug
   icon: string
   step: string
   title: string
@@ -21,7 +20,6 @@ interface BookingType {
 const BOOKING_TYPES: BookingType[] = [
   {
     id: 'info',
-    calSlug: 'phone',
     icon: '📞',
     step: 'Schritt 1',
     title: 'Info-Telefonat',
@@ -30,7 +28,6 @@ const BOOKING_TYPES: BookingType[] = [
   },
   {
     id: 'eval',
-    calSlug: 'interview',
     icon: '📋',
     step: 'Schritt 2',
     title: 'Bedarfsanalyse',
@@ -41,7 +38,6 @@ const BOOKING_TYPES: BookingType[] = [
   },
   {
     id: 'visit',
-    calSlug: 'homevisit',
     icon: '🏡',
     step: 'Schritt 3',
     title: 'Hausbesuch',
@@ -193,7 +189,7 @@ export default function BookingSection() {
   }
 
   return (
-    <section id="booking" className="py-[120px] px-6 bg-white relative overflow-hidden scroll-mt-[72px]">
+    <section id="booking" className="w-[66vw] mx-auto py-[120px] px-6 bg-white relative overflow-hidden scroll-mt-[72px]">
 
       {/* BG gradients */}
       <div className="absolute inset-0 pointer-events-none"
@@ -205,7 +201,7 @@ export default function BookingSection() {
         }}
       />
 
-      <div className="max-w-[1200px] mx-auto relative z-10">
+      <div className="relative z-10">
 
         {/* Header */}
         <div className="text-center mb-16">
@@ -241,7 +237,7 @@ export default function BookingSection() {
         {activeType && (
           <div ref={widgetRef} className="max-w-[720px] mx-auto mb-10">
             <CalWidget
-              eventTypeId={activeType.calSlug}
+              eventTypeId={activeType.id}
               title={activeType.title}
               description={`${activeType.step} · ${activeType.duration} Minuten`}
               onClose={() => setActiveType(null)}

@@ -1,38 +1,31 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { getCalApi } from "@calcom/embed-react";
-import { useEffect, useRef } from "react";
+import BookingRequestForm from "@/src/components/booking/BookingRequestForm";
 
-// Load the Cal embed only on the client to avoid SSR performance.mark issues
-const Cal = dynamic(() => import("@calcom/embed-react").then(m => m.default), { ssr: false });
-
-export default function MyApp() {
-  const initialized = useRef(false);
-
-  useEffect(() => {
-    // Guard against React 19 Strict Mode double-invocation
-    if (initialized.current) return;
-    initialized.current = true;
-
-    (async function () {
-      const cal = await getCalApi({ namespace: "interview" });
-      cal("ui", {
-        cssVarsPerTheme: { light: { "cal-brand": "#d8971b" }, dark: { "cal-brand": "#fafafa" } },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
+export default function InterviewPage() {
   return (
-    <Cal
-      namespace="interview"
-      calLink="frank-girse-rjljth/interview"
-      style={{ width: "100%", height: "100%", overflow: "scroll" }}
-      config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true" }}
-    />
+    <main className="min-h-screen bg-gradient-to-br from-teal-50/60 via-white to-orange-50/40 py-16 px-4">
+      <div className="max-w-2xl mx-auto">
+
+        {/* Eyebrow */}
+        <div className="flex items-center justify-center gap-2 text-[0.75rem] font-bold uppercase tracking-[0.15em] text-teal-600 mb-4">
+          <span className="w-6 h-[2px] bg-teal-500 rounded" />
+          Terminanfrage
+          <span className="w-6 h-[2px] bg-teal-500 rounded" />
+        </div>
+
+        {/* Headline */}
+        <h1 className="font-display text-center text-[clamp(1.8rem,4vw,2.6rem)] font-black leading-[1.1] tracking-tight text-teal-950 mb-3">
+          Ihr erster Schritt –<br />
+          <em className="not-italic text-teal-600">kostenlos & unverbindlich.</em>
+        </h1>
+        <p className="text-center text-stone-500 text-sm leading-relaxed mb-10 max-w-sm mx-auto">
+          Wählen Sie Gesprächsart und Wunschtermin. Wir rufen Sie zurück und bestätigen alles per E-Mail.
+        </p>
+
+        <BookingRequestForm />
+      </div>
+    </main>
   );
 }
-  
   

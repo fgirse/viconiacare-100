@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSessionFromRequest } from '@/src/lib/auth/session'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 
 export async function GET(req: NextRequest) {
   const session = await getSessionFromRequest(req)
@@ -7,27 +9,26 @@ export async function GET(req: NextRequest) {
 
   const { searchParams } = req.nextUrl
   const category = searchParams.get('category') ?? ''
-  const page     = searchParams.get('page') ?? '1'
-
-  const siteUrl  = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
-
-  const params = new URLSearchParams({
-    'where[patient][equals]': session.patientId ?? session.userId,
-    'depth': '1',
-    'limit': '20',
-    'page':  page,
-    'sort':  '-createdAt',
-  })
-  if (category) params.set('where[category][equals]', category)
+  const page     = Number(searchParams.get('page') ?? '1')
 
   try {
-    const res = await fetch(`${siteUrl}/api/documents?${params}`, {
-      headers: { Authorization: `users API-Key ${process.env.PAYLOAD_SECRET}` },
-      next: { revalidate: 30 },
+    const payload = await getPayload({ config: configPromise })
+
+    const where: Record<string, unknown> = {
+      patient: { equals: session.patientId ?? session.userId },
+    }
+    if (category) where.category = { equals: category }
+
+    const data = await payload.find({
+      collection: 'documents',
+      where,
+      depth: 1,
+      limit: 20,
+      page,
+      sort: '-createdAt',
+      overrideAccess: true,
     })
 
-    if (!res.ok) throw new Error(`Payload error ${res.status}`)
-    const data = await res.json()
     return NextResponse.json({ success: true, ...data })
   } catch (err) {
     console.error('[/api/patients/documents]', err)

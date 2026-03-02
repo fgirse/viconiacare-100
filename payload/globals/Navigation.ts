@@ -4,7 +4,7 @@ import { isAdmin } from '../access/roles'
 export const Navigation: GlobalConfig = {
   slug: 'navigation',
   label: 'Navigation',
-  admin: { group: 'Einstellungen' },
+  admin: { group: 'Globals' },
   access: { read: () => true, update: isAdmin },
   fields: [
     { name: 'mainNav', type: 'array', label: 'Hauptnavigation', fields: [

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { cn } from '@/src/lib/utils/utils'
+import { cn } from '@/src/lib/utils/utils';
 import { useCalSlots } from '@/src/hooks/useCalSlots'
 import { useCreateBooking } from '@/src/hooks/useCreateBooking'
 import type { CalSlot } from '@/src/lib/cal/client'
@@ -152,11 +152,11 @@ function CalendarStep({
           <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
             {(byDate[selectedDate] ?? []).map(slot => (
               <button
-                key={slot.time}
+                key={slot.start}
                 onClick={() => onSelect(slot)}
                 className="py-2.5 rounded-xl text-[0.82rem] font-bold bg-teal-50 text-teal-700 hover:bg-teal-600 hover:text-white hover:scale-105 transition-all duration-150"
               >
-                {fmtTime(slot.time)}
+                {fmtTime(slot.start)}
               </button>
             ))}
           </div>
@@ -209,8 +209,8 @@ function AttendeeForm({
       {/* Slot summary */}
       <div className="bg-gradient-to-br from-teal-50 to-teal-100/60 border border-teal-200 rounded-2xl p-4 mb-6">
         <p className="text-[0.7rem] font-bold uppercase tracking-wider text-teal-600 mb-1">Ihr gewählter Termin</p>
-        <p className="font-bold text-teal-900">{fmtDate(slot.time)}</p>
-        <p className="text-sm font-bold text-teal-700">{fmtTime(slot.time)} – {fmtTime(new Date(new Date(slot.time).getTime() + (slot.duration ?? 60) * 60_000).toISOString())} Uhr</p>
+        <p className="font-bold text-teal-900">{fmtDate(slot.start)}</p>
+        <p className="text-sm font-bold text-teal-700">{fmtTime(slot.start)} – {fmtTime(slot.end)} Uhr</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -363,7 +363,7 @@ export default function CalWidget({ eventTypeId, title, description, onClose }: 
     if (!selectedSlot) return
     const booking = await createBooking({
       eventTypeId,
-      start:    selectedSlot.time,
+      start:    selectedSlot.start,
       attendee: {
         name:     formData.name,
         email:    formData.email,
