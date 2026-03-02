@@ -118,20 +118,36 @@ const Navbar9 = ({ className }: Navbar9Props) => {
       title: t("services"),
       links: [
         {
-          label: t("services_team"),
-          description: t("services_team_desc"),
+          label: t("grundpflege_title"),
+          description: t("grundpflege_desc"),
           url: "#",
           icon: { component: Info, color: "#f3c807ff" },
         },
         {
-          label: t("services_support"),
-          description: t("services_support_desc"),
+          label: t("behandlung_title"),
+          description: t("behandlung_desc"),
           url: "#",
           icon: { component: HelpCircle, color: "#f3c807ff" },
         },
         {
-          label: t("services_news"),
-          description: t("services_news_desc"),
+          label: t("hauswirtschaft_title"),
+          description: t("hauswirtschaft_desc"),
+          url: "#",
+          icon: { component: Bell, color: "#f3c807ff" },
+        },
+        {
+          label: t("begleitung_title"),
+          description: t("begleitung_desc"),
+          url: "#",
+          icon: { component: Bell, color: "#f3c807ff" },
+        },{
+          label: t("demenz_title"),
+          description: t("demenz_desc"),
+          url: "#",
+          icon: { component: Bell, color: "#f3c807ff" },
+        },{
+          label: t("palliativ_title"),
+          description: t("palliativ_desc"),
           url: "#",
           icon: { component: Bell, color: "#f3c807ff" },
         },

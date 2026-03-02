@@ -24,7 +24,7 @@ const Example = () => {
           alt="Termin Button"
           width={200}
           height={200}
-          className="z-50 absolute w-36 top-[78vh] right-1 cursor-pointer top-[84vh] md:w-36 md:top-[15vh] md:right-12 lg:w-54"
+          className="z-50 absolute w-36 top-[18vh] right-1 cursor-pointer md:w-36 md:top-[15vh] md:right-12 lg:w-54"
         />
       </AlertDialogTrigger>
 
