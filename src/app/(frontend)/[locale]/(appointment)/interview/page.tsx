@@ -1,6 +1,6 @@
 "use client";
 
-import BookingRequestForm from "@/src/components/booking/BookingRequestForm";
+import BookingRequestForm from "@/src/components/booking/CalWidget";
 
 export default function InterviewPage() {
   return (
@@ -23,7 +23,9 @@ export default function InterviewPage() {
           Wählen Sie Gesprächsart und Wunschtermin. Wir rufen Sie zurück und bestätigen alles per E-Mail.
         </p>
 
-        <BookingRequestForm />
+        <BookingRequestForm eventTypeId={"interview"} title={""} description={""} onClose={function (): void {
+          throw new Error("Function not implemented.");
+        } } />
       </div>
     </main>
   );

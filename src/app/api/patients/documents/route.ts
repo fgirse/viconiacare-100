@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getSessionFromRequest } from '@/src/lib/auth/session'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
+import type { Where } from 'payload'
 
 export async function GET(req: NextRequest) {
   const session = await getSessionFromRequest(req)
@@ -14,7 +15,7 @@ export async function GET(req: NextRequest) {
   try {
     const payload = await getPayload({ config: configPromise })
 
-    const where: Record<string, unknown> = {
+    const where: Where = {
       patient: { equals: session.patientId ?? session.userId },
     }
     if (category) where.category = { equals: category }
