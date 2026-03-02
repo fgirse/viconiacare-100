@@ -1,0 +1,8 @@
+# Local uploads and media (use Cloudinary/S3 in production)
+/uploads
+/media
+
+# Dev artifacts
+.next/dev
+*.af
+*.af~lock~
