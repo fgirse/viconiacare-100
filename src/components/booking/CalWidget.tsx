@@ -363,7 +363,8 @@ export default function CalWidget({ eventTypeId, title, description, onClose }: 
     if (!selectedSlot) return
     const booking = await createBooking({
       eventTypeId,
-      start:    selectedSlot.start,
+      start:           selectedSlot.start,
+      appointmentType: eventTypeId as 'info' | 'eval' | 'visit',
       attendee: {
         name:     formData.name,
         email:    formData.email,

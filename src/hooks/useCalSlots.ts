@@ -48,9 +48,9 @@ export function useCalSlots({
     try {
       const params = new URLSearchParams({
         eventTypeId,
-        start: startStr,
-        end:   endStr,
-        tz:    timeZone,
+        start:    startStr,
+        end:      endStr,
+        timeZone: timeZone,
       })
 
       const res = await fetch(`/api/booking/slots?${params}`)

@@ -11,7 +11,9 @@ interface CreateBookingBody {
     timeZone: string
     language?: string
   }
-  notes?: string
+  notes?:           string
+  phone?:           string
+  appointmentType?: 'info' | 'eval' | 'visit'
 }
 
 interface BookingResult {

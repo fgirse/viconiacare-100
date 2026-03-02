@@ -14,7 +14,7 @@ export default function MyApp() {
     initialized.current = true;
 
     (async function () {
-      const cal = await getCalApi({ namespace: "homevisit" });
+      const cal = await getCalApi({ namespace: "homevisit", embedJsUrl: "https://cal.eu/embed/embed.js" });
       cal("ui", {
         cssVarsPerTheme: { light: { "cal-brand": "#d8971b" }, dark: { "cal-brand": "#fafafa" } },
         hideEventTypeDetails: false,
@@ -26,7 +26,7 @@ export default function MyApp() {
   return (
     <Cal
       namespace="homevisit"
-      calLink="frank-girse-rjljth/homevisit"
+      calLink="viconiacare/hausbesuch"
       style={{ width: "100%", height: "100%", overflow: "scroll" }}
       config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true" }}
     />

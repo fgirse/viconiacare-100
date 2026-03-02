@@ -13,7 +13,7 @@ function headers(version = '2024-08-13') {
   } as const
 }
 
-export interface CalSlot { start: string; end: string }
+export interface CalSlot { start: string; end: string; date?: string }
 
 export interface CalAttendee {
   name: string; email: string; timeZone: string; language?: string
@@ -39,18 +39,28 @@ export interface CalEventType {
 // ── API calls ──────────────────────────────────────────────────────────────────
 
 export async function getAvailableSlots({
-  eventTypeSlug, username, start, end, timeZone = 'Europe/Berlin',
+  eventTypeId, startTime, endTime, timeZone = 'Europe/Berlin',
 }: {
-  eventTypeSlug: string; username: string
-  start: string; end: string; timeZone?: string
+  eventTypeId: number
+  startTime: string; endTime: string; timeZone?: string
 }): Promise<CalSlot[]> {
-  const q = new URLSearchParams({ eventTypeSlug, username, start, end, timeZone })
-  const res = await fetch(`${CAL_BASE}/slots?${q}`, {
-    headers: headers('2024-09-04'), next: { revalidate: 60 },
+  const q = new URLSearchParams({
+    eventTypeId: String(eventTypeId),
+    startTime,
+    endTime,
+    timeZone,
+  })
+  const res = await fetch(`${CAL_BASE}/slots/available?${q}`, {
+    headers: headers('2024-09-04'),
+    next: { revalidate: 60 },
   })
   if (!res.ok) throw new Error(`Cal slots error ${res.status}: ${await res.text()}`)
   const json = await res.json()
-  return json.data ?? []
+  // Cal.com v2: { data: { slots: { "YYYY-MM-DD": [{time: "..."}] } } }
+  const slotsMap: Record<string, { time: string }[]> = json.data?.slots ?? {}
+  return Object.entries(slotsMap).flatMap(([date, times]) =>
+    times.map(s => ({ start: s.time, end: s.time, date }))
+  )
 }
 
 export async function createBooking(input: CreateBookingInput): Promise<CalBooking> {

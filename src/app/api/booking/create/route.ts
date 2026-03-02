@@ -4,14 +4,16 @@ import { createBooking } from '@/src/lib/cal/client'
 import { sendAppointmentConfirmation } from '@/src/lib/email/resend'
 
 const Schema = z.object({
-  eventTypeId:   z.number(),
+  eventTypeId:   z.union([z.number(), z.enum(['info', 'eval', 'visit'])]),
   start:         z.string(),
-  name:          z.string().min(2),
-  email:         z.string().email(),
-  phone:         z.string().optional(),
-  notes:         z.string().optional(),
-  timeZone:      z.string().default('Europe/Berlin'),
-  language:      z.string().default('de'),
+  attendee: z.object({
+    name:     z.string().min(2),
+    email:    z.string().email(),
+    timeZone: z.string().default('Europe/Berlin'),
+    language: z.string().default('de'),
+  }),
+  phone:           z.string().optional(),
+  notes:           z.string().optional(),
   appointmentType: z.enum(['info', 'eval', 'visit']).default('info'),
 })
 
@@ -30,14 +32,28 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Validation failed', details: parsed.error.flatten() }, { status: 422 })
   }
 
-  const { eventTypeId, start, name, email, phone, notes, timeZone, language, appointmentType } = parsed.data
+  const { eventTypeId: rawEventTypeId, start, attendee, phone, notes, appointmentType } = parsed.data
+
+  // Resolve string key → numeric Cal.com event type ID
+  const numericIdMap: Record<string, number | undefined> = {
+    info:  Number(process.env.CAL_EVENT_TYPE_PHONE)     || undefined,
+    eval:  Number(process.env.CAL_EVENT_TYPE_INTERVIEW) || undefined,
+    visit: Number(process.env.CAL_EVENT_TYPE_HOMEVISIT) || undefined,
+  }
+  const eventTypeId: number = typeof rawEventTypeId === 'number'
+    ? rawEventTypeId
+    : (numericIdMap[rawEventTypeId] ?? 0)
+
+  if (!eventTypeId) {
+    return NextResponse.json({ error: `Unknown eventTypeId: ${rawEventTypeId}` }, { status: 400 })
+  }
 
   try {
     // ── Create Cal.com booking ────────────────────────────────────
     const booking = await createBooking({
       eventTypeId,
       start,
-      attendee: { name, email, timeZone, language },
+      attendee: { name: attendee.name, email: attendee.email, timeZone: attendee.timeZone, language: attendee.language },
       metadata: { phone: phone ?? '', notes: notes ?? '' },
       ...(notes ? { bookingFieldsResponses: { notes } } : {}),
     })
@@ -45,12 +61,12 @@ export async function POST(req: NextRequest) {
     // ── Send confirmation email ───────────────────────────────────
     const startDate = new Date(booking.start)
     await sendAppointmentConfirmation({
-      to:              email,
-      firstName:       name.split(' ')[0],
+      to:              attendee.email,
+      firstName:       attendee.name.split(' ')[0],
       appointmentType,
       date:            startDate.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
       time:            startDate.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }),
-      locale:          language,
+      locale:          attendee.language,
     }).catch(e => console.error('Email failed (non-fatal):', e))
 
     return NextResponse.json({ success: true, data: booking }, { status: 201 })

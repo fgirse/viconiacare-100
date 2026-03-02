@@ -14,7 +14,7 @@ export default function MyApp() {
     initialized.current = true;
 
     (async function () {
-      const cal = await getCalApi({ namespace: "phone" });
+      const cal = await getCalApi({ namespace: "phone", embedJsUrl: "https://cal.eu/embed/embed.js" });
       cal("ui", {
         cssVarsPerTheme: { light: { "cal-brand": "#d8971b" }, dark: { "cal-brand": "#fafafa" } },
         hideEventTypeDetails: false,
@@ -26,7 +26,7 @@ export default function MyApp() {
   return (
     <Cal
       namespace="phone"
-      calLink="cal.eu/viconiacare/info-telefonat"
+      calLink="viconiacare/info-telefonat"
       style={{ width: "100%", height: "100%", overflow: "scroll" }}
       config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true" }}
     />

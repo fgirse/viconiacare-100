@@ -3,7 +3,7 @@ import Logo_VivoniaCare from '@/public/images/ViconiaCareLogoobg.svg';
 import HouseOfCare from '@/public/images/Hero4.png';
 import TestimonialsSection from '@/src/components/TestimonialsSection';
 import ModalAppointment from '@/src/components/Modals/ModalAppointment';
-import BookingSection from '@/src/components/sections/BookingSection';
+import BookingSection from '@/src/components/booking/BookingSection';
 import ServicesSection from '@/components/ServicesSection'
 import WyUsSection from '@/src/components/WhyUsSection';
 //import { About16 } from '@/components/about16';

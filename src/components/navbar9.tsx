@@ -224,8 +224,8 @@ const Navbar9 = ({ className }: Navbar9Props) => {
               </NavigationMenuList>
             </NavigationMenu>
             <div className="flex items-center gap-4">
-              <Button variant="outline" asChild className="hidden lg:flex border-yellow-500 text-yellow-400 hover:bg-yellow-500/10">
-                <Link href="/contact">{t("booking")}</Link>
+              <Button variant="outline" asChild className="hidden lg:flex border-white text-yellow-400 bg-red-400 hover:bg-yellow-500/50">
+                <Link href="/termin">{t("booking")}</Link>
               </Button>
               <Button asChild>
                 <a href={primaryButton.url}>{primaryButton.label}</a>
