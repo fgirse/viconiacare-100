@@ -7,6 +7,18 @@
     "booking": "Book appointment",
     "login": "Log in",
     "dashboard": "My area",
+    "grundpflege_title": "Basic & personal care",
+    "grundpflege_desc": "Washing, dressing, oral care and positioning – dignified and gentle, tailored to your rhythm.",
+    "behandlung_title": "Treatment care",
+    "behandlung_desc": "Medication administration, wound care, injections and other prescribed measures.",
+    "hauswirtschaft_title": "Household support",
+    "hauswirtschaft_desc": "Shopping, cooking, cleaning and laundry – so you feel at home.",
+    "begleitung_title": "Companionship & support",
+    "begleitung_desc": "Doctor visits, walks, conversations – we are there for you.",
+    "demenz_title": "Dementia care",
+    "demenz_desc": "Empathetic support and structured daily routines for people with dementia.",
+    "palliativ_title": "Palliative care",
+    "palliativ_desc": "Dignified end-of-life care – for quality of life and family support.",
     "history": "History",
     "history_desc": "History of ViconiaCare GmbH",
     "leitbild": "Mission",
@@ -26,6 +38,7 @@
     "api_desc": "Explore our API",
     "menu4": "More",
     "signup": "Sign up"
+   
   },
   "hero": {
     "badge": "Outpatient care · At your home",

@@ -151,7 +151,7 @@ export default function Footer() {
                 <li key={s}>
                   <a
                     href="#services"
-                    className="text-sm text-white/45 transition-colors duration-200 hover:text-teal-400"
+                    className="text-sm text-white/45 transition-colors duration-200 hover:text-yellow-600"
                   >
                     {s}
                   </a>
@@ -168,7 +168,7 @@ export default function Footer() {
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-sm text-white/45 transition-colors duration-200 hover:text-teal-400"
+                    className="text-sm text-white/45 transition-colors duration-200 hover:text-yellow-600"
                   >
                     {label}
                   </Link>
@@ -200,7 +200,7 @@ export default function Footer() {
           <div className="flex items-center gap-5">
             {['Impressum', 'Datenschutz', 'AGB', 'Barrierefreiheit'].map((link, i, arr) => (
               <span key={link} className="flex items-center gap-5">
-                <a href="#" className="text-xs text-white/30 hover:text-teal-400 transition-colors duration-200">
+                <a href="#" className="text-xs text-white/30 hover:text-yellow-600 transition-colors duration-200">
                   {link}
                 </a>
                 {i < arr.length - 1 && <span className="w-px h-3.5 bg-white/15" />}

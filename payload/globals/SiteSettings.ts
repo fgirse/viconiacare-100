@@ -7,7 +7,7 @@ export const SiteSettings: GlobalConfig = {
   admin: { group: 'Globals' },
   access: { read: () => true, update: isAdmin },
   fields: [
-    { name: 'siteName', type: 'text',   label: 'Firmenname', defaultValue: 'PflegePlus' },
+    { name: 'siteName', type: 'text',   label: 'Firmenname', defaultValue: 'Viconia Care GmbH' },
     { name: 'logo',     type: 'upload', label: 'Logo',       relationTo: 'media' },
     { name: 'contact',  type: 'group',  label: 'Kontakt', fields: [
       { name: 'phone',   type: 'text',     label: 'Telefon' },
@@ -17,7 +17,7 @@ export const SiteSettings: GlobalConfig = {
     { name: 'cal', type: 'group', label: 'Cal.com', fields: [
       { name: 'username',   type: 'text', label: 'Benutzername' },
       { name: 'eventInfo',  type: 'text', label: 'Slug: Info-Telefonat' },
-      { name: 'eventEval',  type: 'text', label: 'Slug: Bedarfsanalyse' },
+      { name: 'eventEval',  type: 'text', label: 'Slug: Interview' },
       { name: 'eventVisit', type: 'text', label: 'Slug: Hausbesuch' },
     ]},
   ],

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog'
 
@@ -22,8 +23,8 @@ const DialogFullScreenDemo = () => {
         />
       </DialogTrigger>
       <DialogContent className='mb-8 flex h-[calc(100vh-2rem)] min-w-[calc(100vw-2rem)] flex-col justify-between gap-0 p-0'>
-      
-       <BookingSection/>
+        <DialogTitle className="sr-only">Termin buchen</DialogTitle>
+        <BookingSection/>
       </DialogContent>
     </Dialog>
   )
