@@ -1,6 +1,5 @@
 'use client'
 
-import {  useRef } from 'react'
 //import Link from 'next/link'
 import { cn } from '@/src/lib/utils/utils'
 
@@ -90,7 +89,6 @@ function StatItem({ num, suffix, label }: { num: string; suffix: string; label: 
 
 // ── Main component ────────────────────────────────────────────────────────────
 export default function HeroSection() {
-  const scrollRef = useRef<HTMLAnchorElement>(null)
 
   const handleScroll = (href: string) => {
     const el = document.querySelector(href)

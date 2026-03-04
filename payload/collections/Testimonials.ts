@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { isAdmin, isEditor } from '../access/roles'
 
 const Testimonials: CollectionConfig = {
   slug: 'testimonials',
@@ -11,7 +12,10 @@ const Testimonials: CollectionConfig = {
     defaultColumns: ['familyName', 'rating', 'createdAt'],
   },
   access: {
-    read: () => true,
+    read:   () => true,
+    create: isAdmin,
+    update: isEditor,
+    delete: isAdmin,
   },
   fields: [
     {

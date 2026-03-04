@@ -2,8 +2,56 @@ import { Link } from '@/src/i18n/navigation'
 type AppPathname = string
 import Image from 'next/image'
 import LogoViconia from '@/public/images/ViconiaCareLogoobg.svg';
-//import TextViconia from '@/public/images/schritzug.png';
 import LocaleSwitcher from '@/src/components/LocaleSwitcher'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
+import { getTranslations } from 'next-intl/server'
+import type { Locale } from '@/src/i18n/config'
+
+interface NavItem { label: string; link: string; openInNewTab?: boolean }
+interface SiteContact { phone?: string; email?: string; address?: string }
+
+async function getFooterData(locale: Locale): Promise<{
+  leistungen: NavItem[]
+  infos: NavItem[]
+  siteName: string
+  contact: SiteContact
+}> {
+  try {
+    const payload = await getPayload({ config: configPromise })
+
+    const [nav, site] = await Promise.all([
+      payload.findGlobal({
+        slug: 'navigation',
+        depth: 0,
+        locale,
+        fallbackLocale: 'de',
+      }) as Promise<{
+        footerLeistungen?: NavItem[]
+        footerInfos?: NavItem[]
+      }>,
+      payload.findGlobal({ slug: 'site-settings', depth: 0 }) as Promise<{
+        siteName?: string
+        contact?: SiteContact
+      }>,
+    ])
+    console.log('[Footer] locale:', locale, '| leistungen:', nav.footerLeistungen?.length ?? 0, '| infos:', nav.footerInfos?.length ?? 0)
+    return {
+      leistungen: nav.footerLeistungen ?? [],
+      infos: nav.footerInfos ?? [],
+      siteName: site.siteName ?? 'ViconiaCare GmbH',
+      contact: site.contact ?? {},
+    }
+  } catch (err) {
+    console.error('[Footer] getFooterData error:', err)
+    return {
+      leistungen: [],
+      infos: [],
+      siteName: 'ViconiaCare GmbH',
+      contact: {},
+    }
+  }
+}
 
 // ── SVG Icons (duotone yellow-600 / white) ───────────────────────────
 const IconPhone = () => (
@@ -62,15 +110,19 @@ const IconWhatsApp = () => (
   </svg>
 )
 
-const SERVICES = [
-  'Grundpflege', 'Behandlungspflege', 'Hauswirtschaft',
-  'Begleitung', 'Demenzbetreuung', 'Palliativpflege',
+const SERVICES_FALLBACK: NavItem[] = [
+  { label: 'Grundpflege',        link: '/grundpflege' },
+  { label: 'Behandlungspflege',  link: '/behandlung' },
+  { label: 'Hauswirtschaft',     link: '/hauswirtschaft' },
+  { label: 'Begleitung',         link: '/begleitung' },
+  { label: 'Demenzbetreuung',    link: '/demenz' },
+  { label: 'Palliativpflege',    link: '/palliativ' },
 ]
 
-const INFO_LINKS: { label: string; href: AppPathname }[] = [
-  { label: 'Über uns',    href: '/about/leitbild' },
-  { label: 'Unser Team', href: '/about/team'      },
-  { label: 'Kontakt',    href: '/contact'         },
+const INFO_FALLBACK: NavItem[] = [
+  { label: 'Über uns',    link: '/about/leitbild' },
+  { label: 'Unser Team', link: '/about/team' },
+  { label: 'Kontakt',    link: '/contact' },
 ]
 
 const SOCIALS = [
@@ -80,7 +132,16 @@ const SOCIALS = [
   { icon: <IconWhatsApp />,  label: 'WhatsApp',  href: '#' },
 ]
 
-export default function Footer() {
+export default async function Footer({ locale }: { locale: Locale }) {
+  const { leistungen, infos, siteName, contact } = await getFooterData(locale)
+  const t = await getTranslations({ locale, namespace: 'footer' })
+
+  const services  = leistungen.length > 0 ? leistungen : SERVICES_FALLBACK
+  const infoLinks = infos.length > 0 ? infos : INFO_FALLBACK
+
+  const phone   = contact.phone   ?? '+49 40 123 456 789'
+  const email   = contact.email   ?? 'info@viconiacare.de'
+  const address = contact.address ?? 'Weidestr. 120 b, 22083 Hamburg'
   return (
     <footer id="contact" className="bg-slate-900 text-white pt-20">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -99,19 +160,19 @@ export default function Footer() {
                 height={60}
               />
               </div>
-              <p className='font-passionate text-[2.2rem] text-yellow-500'>ViconiaCare GmbH
+              <p className='font-passionate text-[2.2rem] text-yellow-500'>{siteName}
              </p> 
             </div>
 
             <p className="text-sm leading-relaxed text-white/45 max-w-[280px] mb-7 font-light">
-              ViconiaCare: Ambulante Pflege, die mit Ihnen wächst – professionell, herzlich und zuverlässig.
+              {t('tagline')}
             </p>
 
             <div className="flex flex-col gap-3">
               {[
-                { icon: <IconPhone />,  text: '+49 40 123 456 789', href: 'tel:+4940123456789' },
-                { icon: <IconMail />,   text: 'info@viconiacare.de', href: 'mailto:info@viconiacare.de' },
-                { icon: <IconMapPin />, text: 'Weidestr. 120 b, 22083 Hamburg', href: null as string | null },
+                { icon: <IconPhone />,  text: phone,   href: `tel:${phone.replace(/\s/g, '')}` },
+                { icon: <IconMail />,   text: email,   href: `mailto:${email}` },
+                { icon: <IconMapPin />, text: address, href: null as string | null },
                 { icon: <IconClock />,  text: 'Mo–Fr 08:00–18:00 · Notfall 24/7', href: null as string | null },
               ].map(({ icon, text, href }) => {
                 const inner = (
@@ -143,34 +204,36 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* B1 Services */}
           <div>
-            <h4 className="font-display text-base font-bold text-white mb-5">Leistungen</h4>
+            <h4 className="font-display text-base font-bold text-white mb-5">{t('col_services')}</h4>
             <ul className="flex flex-col gap-2.5">
-              {SERVICES.map(s => (
-                <li key={s}>
-                  <a
-                    href="#services"
+              {services.map(item => (
+                <li key={item.label}>
+                  <Link
+                    href={item.link as AppPathname}
+                    {...(item.openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     className="text-sm text-white/45 transition-colors duration-200 hover:text-yellow-600"
                   >
-                    {s}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Info */}
+          {/* B2 Info */}
           <div>
-            <h4 className="font-display text-base font-bold text-white mb-5">Informationen</h4>
+            <h4 className="font-display text-base font-bold text-white mb-5">{t('col_info')}</h4>
             <ul className="flex flex-col gap-2.5">
-              {INFO_LINKS.map(({ label, href }) => (
-                <li key={label}>
+              {infoLinks.map(item => (
+                <li key={item.label}>
                   <Link
-                    href={href}
+                    href={item.link as AppPathname}
+                    {...(item.openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     className="text-sm text-white/45 transition-colors duration-200 hover:text-yellow-600"
                   >
-                    {label}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -179,15 +242,15 @@ export default function Footer() {
 
           {/* Language + Emergency */}
           <div>
-            <h4 className="font-display text-base font-bold text-white mb-5">Sprache</h4>
+            <h4 className="font-display text-base font-bold text-white mb-5">{t('col_language')}</h4>
             <LocaleSwitcher />
 
-            <h4 className="font-display text-base font-bold text-white mt-7 mb-4">Notfall</h4>
+            <h4 className="font-display text-base font-bold text-white mt-7 mb-4">{t('col_emergency')}</h4>
             <a
               href="tel:+4989123456789"
               className="text-sm font-bold text-orange-400 hover:text-orange-300 transition-colors duration-200"
             >
-              📞 24/7 Notfallnummer
+              📞 {t('emergency')}
             </a>
           </div>
         </div>
@@ -195,13 +258,18 @@ export default function Footer() {
         {/* ── Bottom bar ──────────────────────────────────────────── */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-7">
           <p className="text-xs text-white/30">
-            © {new Date().getFullYear()} ViconiaCare GmbH · Ambulanter Pflegedienst & <span className="text-yellow-500 uppercase font-mono">Medicus Design</span> ·Basel·🇨🇭 · Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} {siteName} · Ambulanter Pflegedienst & <span className="text-yellow-500 uppercase font-mono">Medicus Design</span> ·Basel·🇨🇭 · {t('rights')}
           </p>
           <div className="flex items-center gap-5">
-            {['Impressum', 'Datenschutz', 'AGB', 'Barrierefreiheit'].map((link, i, arr) => (
-              <span key={link} className="flex items-center gap-5">
-                <a href="#" className="text-xs text-white/30 hover:text-yellow-600 transition-colors duration-200">
-                  {link}
+            {[
+              { label: t('imprint'),       href: '#' },
+              { label: t('privacy'),       href: '#' },
+              { label: t('terms'),         href: '#' },
+              { label: t('accessibility'), href: '#' },
+            ].map((link, i, arr) => (
+              <span key={link.label} className="flex items-center gap-5">
+                <a href={link.href} className="text-xs text-white/30 hover:text-yellow-600 transition-colors duration-200">
+                  {link.label}
                 </a>
                 {i < arr.length - 1 && <span className="w-px h-3.5 bg-white/15" />}
               </span>

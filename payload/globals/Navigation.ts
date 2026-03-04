@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { isAdmin } from '../access/roles'
 
 // ─── Reusable helper: simple nav item fields (label + link + openInNewTab) ───
 const simpleNavItemFields = [
@@ -74,6 +75,7 @@ export const Navigation: GlobalConfig = {
   },
   access: {
     read: () => true,
+    update: isAdmin,
   },
   fields: [
     // ─────────────────────────────────────────────────────────────────────────

@@ -11,7 +11,7 @@ export default function BookingSection() {
   return (
     <main className="min-h-screen w-[100vw] bg-stone-50">
       {/* ── Hero ──────────────────────────────────────────────── */}
-      <section className="flex flex-col items-center justify-center text-center px-6 pt-24 pb-20">
+      <section className="flex flex-col items-center justify-center text-center px-6 pt-2 pb-20">
         <span className="inline-block border border-yellow-600 text-yellow-600 text-[1rem] tracking-[3px] uppercase px-4 py-1.5 mb-6">
           Terminbuchung
         </span>
@@ -29,7 +29,7 @@ export default function BookingSection() {
       </section>
 
       {/* ── Cards ─────────────────────────────────────────────── */}
-      <section className="px-6 pb-24 max-w-6xl mx-auto">
+      <section className="px-6 pb-24 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {EVENT_TYPES.map((event) => (
             <BookingCard
@@ -48,14 +48,14 @@ export default function BookingSection() {
       </section>
 
       {/* ── Email info banner ─────────────────────────────────── */}
-      <section className="border-t border-card-border bg-stone-400 px-6 py-10">
+      <section className=" border-t border-card-border bg-stone-300 px-6 py-10">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
           <div className="text-4xl shrink-0">✉️</div>
           <div>
             <h2 className="font-playfair text-cream text-xl mb-1">
               Automatische E-Mail-Bestätigung
             </h2>
-            <p className="text-[#6a6a90] text-sm leading-relaxed">
+            <p className="text-stone-700 text-sm leading-relaxed">
               Nach Ihrer Buchung erhalten Sie sofort eine Bestätigungsmail mit
               allen Termindetails, einer{" "}
               <span className="text-yellow-600">.ics-Kalendereinladung</span> sowie

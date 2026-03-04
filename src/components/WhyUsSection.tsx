@@ -153,7 +153,7 @@ export default function WhyUsSection() {
           </div>
 
           {/* Stat card 2 */}
-          <div className="absolute top-[-12vh] lg:top-[-10vh] right-8  bg-white rounded-2xl px-5 py-4 shadow-xl flex items-center gap-3">
+          <div className="absolute top-[-12vh] lg:top-[-3vh] right-8  bg-white rounded-2xl px-5 py-4 shadow-xl flex items-center gap-3">
           
             <div>
               <div className=" uppercase text-[3.0rem] md:text-[7.0rem] font-display lg:text-[5.4rem] font-black text-yellow-600 leading-none">Start März 2026 </div>

@@ -50,7 +50,7 @@ export default async function LocaleLayout({
         <Navbar9 />
         <Trustbar />
         {children}
-        <Footer />
+        <Footer locale={locale as import('@/src/i18n/config').Locale} />
         <BackToTop />
       </NextIntlClientProvider>
     </div>

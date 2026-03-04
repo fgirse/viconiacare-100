@@ -128,6 +128,10 @@
     "terms": "AGB",
     "accessibility": "Barrierefreiheit",
     "tagline": "Ambulante Pflege, die mit Ihnen wächst – professionell, herzlich und zuverlässig.",
-    "emergency": "24/7 Notfallnummer"
+    "emergency": "24/7 Notfallnummer",
+    "col_services": "Leistungen",
+    "col_info": "Informationen",
+    "col_language": "Sprache",
+    "col_emergency": "Notfall"
   }
 }

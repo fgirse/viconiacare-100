@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload'
+import { isAdmin, isEditor } from '../access/roles'
 
 const Services: CollectionConfig = {
   slug: 'services',
@@ -12,7 +13,10 @@ const Services: CollectionConfig = {
     group: 'Pflegeangebote',
   },
   access: {
-    read: () => true,
+    read:   () => true,
+    create: isAdmin,
+    update: isEditor,
+    delete: isAdmin,
   },
   fields: [
     {

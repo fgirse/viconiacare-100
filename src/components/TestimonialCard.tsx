@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { Testimonial } from '@/src/types/testimonial'
 
+
 interface TestimonialCardProps {
   testimonial: Testimonial
   index: number

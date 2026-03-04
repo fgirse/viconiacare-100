@@ -129,6 +129,10 @@
     "terms": "Terms",
     "accessibility": "Accessibility",
     "tagline": "Outpatient care that grows with you – professional, caring and reliable.",
-    "emergency": "24/7 Emergency line"
+    "emergency": "24/7 Emergency line",
+    "col_services": "Services",
+    "col_info": "Information",
+    "col_language": "Language",
+    "col_emergency": "Emergency"
   }
 }

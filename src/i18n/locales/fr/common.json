@@ -128,6 +128,10 @@
     "terms": "CGU",
     "accessibility": "Accessibilité",
     "tagline": "Soins ambulatoires professionnels, bienveillants et fiables.",
-    "emergency": "Urgences 24/7"
+    "emergency": "Urgences 24/7",
+    "col_services": "Prestations",
+    "col_info": "Informations",
+    "col_language": "Langue",
+    "col_emergency": "Urgence"
   }
 }

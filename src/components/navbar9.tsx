@@ -53,6 +53,7 @@ interface MenuLink {
   icon?: {
     component: LucideIcon;
     color: string;
+    size?: number;
   };
 }
 interface MenuItem {
@@ -101,19 +102,19 @@ const Navbar9 = ({ className }: Navbar9Props) => {
           label: t("history"),
           description: t("history_desc"),
           url: "/about/history",
-          icon: { component: Castle, color: "#f3c807ff" },
+          icon: { component: Castle, color: "#f0d10b" },
         },
         {
           label: t("leitbild"),
           description: t("leitbild_desc"),
           url: "/about/leitbild",
-          icon: { component: Grid, color: "#f3c807ff" },
+          icon: { component: Grid, color: "#f0d10b" },
         },
         {
           label: t("team"),
           description: t("team_desc"),
           url: "/about/team",
-          icon: { component: User, color: "#f3c807ff" },
+          icon: { component: User, color: "#f0d10b" },
         },
       ],
     },
@@ -124,35 +125,37 @@ const Navbar9 = ({ className }: Navbar9Props) => {
           label: t("grundpflege_title"),
           description: t("grundpflege_desc"),
           url: "/grundpflege",
-          icon: { component: Info, color: "#f3c807ff" },
+          icon: { component: Info, color: "#f0d10b", size: 36},
         },
         {
           label: t("behandlung_title"),
           description: t("behandlung_desc"),
           url: "/behandlung",
-          icon: { component: HelpCircle, color: "#f3c807ff" },
+          icon: { component: HelpCircle, color: "#f0d10b", size: 24 },
         },
         {
           label: t("hauswirtschaft_title"),
           description: t("hauswirtschaft_desc"),
           url: "/hauswirtschaft",
-          icon: { component: Bell, color: "#f3c807ff" },
+          icon: { component: Bell, color: "#f0d10b", size: 24 },
         },
         {
           label: t("begleitung_title"),
           description: t("begleitung_desc"),
           url: "/begleitung",
-          icon: { component: Umbrella, color: "#f3c807ff" },
-        },{
+          icon: { component: Umbrella, color: "#f0d10b", size: 24 },
+        },
+        {
           label: t("demenz_title"),
           description: t("demenz_desc"),
           url: "/demenz",
-          icon: { component: Brain, color: "#f3c807ff" },
-        },{
+          icon: { component: Brain, color: "#f0d10b", size: 24 },
+        },
+        {
           label: t("palliativ_title"),
           description: t("palliativ_desc"),
           url: "/palliativ",
-          icon: { component: CrossIcon, color: "#f3c807ff" },
+          icon: { component: CrossIcon, color: "#f0d10b", size: 24 },
         },
       ],
     },
@@ -163,13 +166,13 @@ const Navbar9 = ({ className }: Navbar9Props) => {
           label: t("docs"),
           description: t("docs_desc"),
           url: "#",
-          icon: { component: Book, color: "#f3c807ff" },
+          icon: { component: Book, color: "#f0d10b" },
         },
         {
           label: t("api"),
           description: t("api_desc"),
           url: "#",
-          icon: { component: Globe, color: "#f3c807ff" },
+          icon: { component: Globe, color: "#f0d10b" },
         },
       ],
     },
@@ -321,7 +324,7 @@ const MenuSubLink = ({ link }: MenuSubLinkProps) => {
       <div className="flex gap-2.5">
         {link.icon && (
           <link.icon.component
-            className="size-5"
+            size={link.icon.size ?? 20}
             style={{ stroke: link.icon.color }}
           />
         )}

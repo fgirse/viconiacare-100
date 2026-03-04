@@ -128,6 +128,10 @@
     "terms": "Termini",
     "accessibility": "Accessibilità",
     "tagline": "Assistenza domiciliare professionale, affettuosa e affidabile.",
-    "emergency": "Emergenza 24/7"
+    "emergency": "Emergenza 24/7",
+    "col_services": "Servizi",
+    "col_info": "Informazioni",
+    "col_language": "Lingua",
+    "col_emergency": "Emergenza"
   }
 }
