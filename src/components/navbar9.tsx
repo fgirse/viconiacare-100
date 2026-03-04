@@ -1,22 +1,7 @@
 "use client";
 
-import {
-  Bell,
-  Book,
-  Brain,
-  Castle,
-  ChevronRight,
-  CrossIcon,
-  Globe,
-  Grid,
-  HelpCircle,
-  Info,
-  LucideIcon,
-  Menu,
-  Umbrella,
-  User,
-  X,
-} from "lucide-react";
+import React from "react";
+import { ChevronRight, Menu, X } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
@@ -50,11 +35,7 @@ interface MenuLink {
   label: string;
   description?: string;
   url?: string;
-  icon?: {
-    component: LucideIcon;
-    color: string;
-    size?: number;
-  };
+  icon?: React.ReactNode;
 }
 interface MenuItem {
   title: string;
@@ -75,6 +56,140 @@ interface MobileNavigationMenuProps {
 
 interface MenuSubLinkProps {
   link: MenuLink;
+}
+
+// ── Duotone SVG icons (yellow-600 / white) ──────────────────────────────────
+function IconCastle() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="4" y="10" width="16" height="12" rx="1" fill="#ca8a04" fillOpacity="0.15" stroke="#ca8a04" strokeWidth="1.5" />
+      <rect x="4"  y="7" width="3" height="4" rx="0.5" fill="#ca8a04" />
+      <rect x="9"  y="7" width="3" height="4" rx="0.5" fill="#ca8a04" />
+      <rect x="14" y="7" width="3" height="4" rx="0.5" fill="#ca8a04" />
+      <path d="M10 22v-5a2 2 0 014 0v5" fill="white" fillOpacity="0.8" stroke="#ca8a04" strokeWidth="1.2" />
+      <rect x="6"  y="13" width="3" height="3" rx="0.5" fill="#ca8a04" fillOpacity="0.5" />
+      <rect x="15" y="13" width="3" height="3" rx="0.5" fill="#ca8a04" fillOpacity="0.5" />
+    </svg>
+  )
+}
+
+function IconLeitbild() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2L4 6v6c0 4.4 3.4 8.5 8 9.5C17.6 20.5 21 16.4 21 12V6L12 2z" fill="#ca8a04" fillOpacity="0.15" stroke="#ca8a04" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M12 7l1.2 3.6H16.8l-2.9 2.1 1.1 3.4L12 14l-3 2.1 1.1-3.4L7.2 10.6H10.8z" fill="#ca8a04" />
+      <circle cx="12" cy="13.5" r="1.2" fill="white" />
+    </svg>
+  )
+}
+
+function IconTeam() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="15" cy="6.5" r="2.8" fill="#ca8a04" fillOpacity="0.3" />
+      <path d="M10.5 21c0-3.2 2-5.8 4.5-5.8S19.5 17.8 19.5 21" stroke="#ca8a04" strokeWidth="1.4" strokeLinecap="round" fill="none" opacity="0.35" />
+      <circle cx="9.5" cy="6.5" r="3.2" fill="#ca8a04" />
+      <circle cx="9.5" cy="6.5" r="1.3" fill="white" />
+      <path d="M4 21c0-3.5 2.5-6.2 5.5-6.2S15 17.5 15 21" stroke="#ca8a04" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+    </svg>
+  )
+}
+
+function IconCare() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="4" y="8" width="16" height="12" rx="2" fill="#ca8a04" fillOpacity="0.13" stroke="#ca8a04" strokeWidth="1.5" />
+      <rect x="9" y="5" width="6" height="6" rx="3" fill="#ca8a04" />
+      <circle cx="12" cy="8" r="1.5" fill="white" />
+      <line x1="12" y1="12" x2="12" y2="17" stroke="#ca8a04" strokeWidth="2" strokeLinecap="round" />
+      <line x1="9.5" y1="14.5" x2="14.5" y2="14.5" stroke="#ca8a04" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function IconMedical() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="9.5" fill="#ca8a04" fillOpacity="0.13" stroke="#ca8a04" strokeWidth="1.5" />
+      <rect x="10" y="7" width="4" height="10" rx="1.2" fill="#ca8a04" />
+      <rect x="7" y="10" width="10" height="4" rx="1.2" fill="#ca8a04" />
+      <rect x="10.8" y="10.8" width="2.4" height="2.4" rx="0.6" fill="white" />
+    </svg>
+  )
+}
+
+function IconHouse() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3 12l9-8 9 8v9a1 1 0 01-1 1H4a1 1 0 01-1-1z" fill="#ca8a04" fillOpacity="0.15" stroke="#ca8a04" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M9 21v-7h6v7" stroke="#ca8a04" strokeWidth="1.4" fill="none" strokeLinejoin="round" />
+      <rect x="6" y="13" width="3" height="3" rx="0.5" fill="#ca8a04" fillOpacity="0.55" />
+      <rect x="14.5" y="4" width="2" height="4" rx="0.4" fill="#ca8a04" />
+    </svg>
+  )
+}
+
+function IconUmbrella() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3 12A9 9 0 0121 12H3z" fill="#ca8a04" fillOpacity="0.2" stroke="#ca8a04" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M12 12v7a2 2 0 01-4 0" stroke="#ca8a04" strokeWidth="1.7" strokeLinecap="round" fill="none" />
+      <line x1="12" y1="3.5" x2="12" y2="12" stroke="#ca8a04" strokeWidth="1.3" />
+      <line x1="6" y1="7" x2="12" y2="12" stroke="#ca8a04" strokeWidth="1" strokeOpacity="0.55" />
+      <line x1="18" y1="7" x2="12" y2="12" stroke="#ca8a04" strokeWidth="1" strokeOpacity="0.55" />
+      <line x1="3.5" y1="10.5" x2="12" y2="12" stroke="#ca8a04" strokeWidth="1" strokeOpacity="0.35" />
+      <line x1="20.5" y1="10.5" x2="12" y2="12" stroke="#ca8a04" strokeWidth="1" strokeOpacity="0.35" />
+    </svg>
+  )
+}
+
+function IconBrain() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 5c0 0-4 1-5 4.5-.7 2.3 0 4.5 1.5 5.5l2 1.5V21" fill="#ca8a04" fillOpacity="0.18" stroke="#ca8a04" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 5c0 0 4 1 5 4.5.7 2.3 0 4.5-1.5 5.5l-2 1.5V21" fill="#ca8a04" fillOpacity="0.3" stroke="#ca8a04" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="12" y1="5" x2="12" y2="21" stroke="#ca8a04" strokeWidth="1.3" strokeDasharray="2 1.5" />
+      <path d="M8.5 9.5c.8.6 1 1.6.5 2.4" stroke="white" strokeWidth="1.1" strokeLinecap="round" fill="none" />
+      <path d="M15.5 9.5c-.8.6-1 1.6-.5 2.4" stroke="white" strokeWidth="1.1" strokeLinecap="round" fill="none" />
+    </svg>
+  )
+}
+
+function IconPalliativ() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="9.5" fill="#ca8a04" fillOpacity="0.12" stroke="#ca8a04" strokeWidth="1.5" />
+      <path d="M12 7c0 0-5 3-5 7 0 2.2 2.2 4 5 4s5-1.8 5-4c0-4-5-7-5-7z" fill="#ca8a04" fillOpacity="0.5" stroke="#ca8a04" strokeWidth="1.3" />
+      <line x1="12" y1="8.5" x2="12" y2="17.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
+      <line x1="12" y1="11.5" x2="9.5" y2="13" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.8" />
+      <line x1="12" y1="13.5" x2="14.5" y2="15" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.8" />
+    </svg>
+  )
+}
+
+function IconBook() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="7" y="3" width="11" height="17" rx="1.5" fill="#ca8a04" fillOpacity="0.2" stroke="#ca8a04" strokeWidth="1.4" />
+      <rect x="5" y="4" width="11" height="16" rx="1.5" fill="#ca8a04" fillOpacity="0.13" stroke="#ca8a04" strokeWidth="1.5" />
+      <line x1="5" y1="4" x2="5" y2="20" stroke="#ca8a04" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="8" y1="9"    x2="13" y2="9"    stroke="white" strokeWidth="1.2" strokeLinecap="round" />
+      <line x1="8" y1="11.5" x2="13" y2="11.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
+      <line x1="8" y1="14"   x2="11" y2="14"   stroke="white" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function IconGlobeNav() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="9.5" fill="#ca8a04" fillOpacity="0.12" stroke="#ca8a04" strokeWidth="1.6" />
+      <ellipse cx="12" cy="12" rx="4" ry="9.5" stroke="#ca8a04" strokeWidth="1.4" fill="none" />
+      <line x1="2.5" y1="12" x2="21.5" y2="12" stroke="#ca8a04" strokeWidth="1.3" />
+      <path d="M4.5 8c2 1 4 1.5 7.5 1.5S19.5 9 19.5 8" stroke="#ca8a04" strokeWidth="1.1" fill="none" />
+      <path d="M4.5 16c2-1 4-1.5 7.5-1.5S19.5 15 19.5 16" stroke="#ca8a04" strokeWidth="1.1" fill="none" />
+    </svg>
+  )
 }
 
 const LOGO = {
@@ -102,19 +217,19 @@ const Navbar9 = ({ className }: Navbar9Props) => {
           label: t("history"),
           description: t("history_desc"),
           url: "/about/history",
-          icon: { component: Castle, color: "#f0d10b" },
+          icon: <IconCastle />,
         },
         {
           label: t("leitbild"),
           description: t("leitbild_desc"),
           url: "/about/leitbild",
-          icon: { component: Grid, color: "#f0d10b" },
+          icon: <IconLeitbild />,
         },
         {
           label: t("team"),
           description: t("team_desc"),
           url: "/about/team",
-          icon: { component: User, color: "#f0d10b" },
+          icon: <IconTeam />,
         },
       ],
     },
@@ -125,37 +240,37 @@ const Navbar9 = ({ className }: Navbar9Props) => {
           label: t("grundpflege_title"),
           description: t("grundpflege_desc"),
           url: "/grundpflege",
-          icon: { component: Info, color: "#f0d10b", size: 36},
+          icon: <IconCare />,
         },
         {
           label: t("behandlung_title"),
           description: t("behandlung_desc"),
           url: "/behandlung",
-          icon: { component: HelpCircle, color: "#f0d10b", size: 24 },
+          icon: <IconMedical />,
         },
         {
           label: t("hauswirtschaft_title"),
           description: t("hauswirtschaft_desc"),
           url: "/hauswirtschaft",
-          icon: { component: Bell, color: "#f0d10b", size: 24 },
+          icon: <IconHouse />,
         },
         {
           label: t("begleitung_title"),
           description: t("begleitung_desc"),
           url: "/begleitung",
-          icon: { component: Umbrella, color: "#f0d10b", size: 24 },
+          icon: <IconUmbrella />,
         },
         {
           label: t("demenz_title"),
           description: t("demenz_desc"),
           url: "/demenz",
-          icon: { component: Brain, color: "#f0d10b", size: 24 },
+          icon: <IconBrain />,
         },
         {
           label: t("palliativ_title"),
           description: t("palliativ_desc"),
           url: "/palliativ",
-          icon: { component: CrossIcon, color: "#f0d10b", size: 24 },
+          icon: <IconPalliativ />,
         },
       ],
     },
@@ -166,13 +281,13 @@ const Navbar9 = ({ className }: Navbar9Props) => {
           label: t("docs"),
           description: t("docs_desc"),
           url: "#",
-          icon: { component: Book, color: "#f0d10b" },
+          icon: <IconBook />,
         },
         {
           label: t("api"),
           description: t("api_desc"),
           url: "#",
-          icon: { component: Globe, color: "#f0d10b" },
+          icon: <IconGlobeNav />,
         },
       ],
     },
@@ -323,10 +438,7 @@ const MenuSubLink = ({ link }: MenuSubLinkProps) => {
     <div className="flex w-full items-center justify-between">
       <div className="flex gap-2.5">
         {link.icon && (
-          <link.icon.component
-            size={link.icon.size ?? 20}
-            style={{ stroke: link.icon.color }}
-          />
+          <span className="flex-shrink-0">{link.icon}</span>
         )}
         <div className="flex flex-col gap-1.5">
           <h3 className="text-sm leading-none text-foreground">{link.label}</h3>

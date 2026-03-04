@@ -74,12 +74,13 @@ export default buildConfig({
   // ── Frontend Localization ──────────────────────────────
   localization: {
     locales: [
-      { label: 'Deutsch', code: 'de' },
-      { label: 'English', code: 'en' },
-      { label: 'Italiano', code: 'it' },
-      { label: 'Español', code: 'es' },
-      { label: 'Português', code: 'pt' },
-      { label: 'Türkçe', code: 'tr' },
+      { label: 'Deutsch',    code: 'de' },
+      { label: 'English',    code: 'en' },
+      { label: 'Français',   code: 'fr' },
+      { label: 'Italiano',   code: 'it' },
+      { label: 'Español',    code: 'es' },
+      { label: 'Português',  code: 'pt' },
+      { label: 'Türkçe',     code: 'tr' },
     ],
     defaultLocale: 'de',
     fallback: true,
