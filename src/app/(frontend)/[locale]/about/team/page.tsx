@@ -13,29 +13,29 @@ import {
 
 const teamMembers = [
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person1.jpeg",
-    title: "Joana Doe",
-    designation: "Creative Director",
+    src: "https://yvwrwpnbd94xpwam.public.blob.vercel-storage.com/Team/portrait1964.png",
+    title: "Frank Girse",
+    designation: "Creative Direktor",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person2.jpeg",
-    title: "John Smith",
-    designation: "Lead Developer",
+    src: "https://yvwrwpnbd94xpwam.public.blob.vercel-storage.com/Team/portraitmick.png",
+    title: "Michel Schreck",
+    designation: "Gesellschafter, Pflegedienst Leitung",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person3.jpeg",
-    title: "Alice Johnson",
-    designation: "Project Manager",
+    src: "https://yvwrwpnbd94xpwam.public.blob.vercel-storage.com/Team/LuckyLuke.png",
+    title: "Conny Adam",
+  designation: "Gesellschafterin, Pflegeleitung",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person4.jpeg",
-    title: "Robert Brown",
-    designation: "UX Designer",
+    src: "https://yvwrwpnbd94xpwam.public.blob.vercel-storage.com/Team/LuckyLuke.png",
+    title: "Nieck Navard",
+    designation: "Gesellschafter und Unternehmer",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person5.jpeg",
-    title: "Emily White",
-    designation: "Marketing Specialist",
+    src: "https://yvwrwpnbd94xpwam.public.blob.vercel-storage.com/Team/LuckyLuke.png",
+    title: "Britta Höppner",
+    designation: " Qualitätsmanagement, Strategie und Organisation",
   },
 ];
 
@@ -47,12 +47,10 @@ const Gallery27 = ({ className }: Gallery27Props) => {
   return (
     <section className={cn("py-32 flex flex-col items-center justify-center w-full", className)}>
       <div className="container mx-auto flex flex-col items-center text-center max-w-9xl px-4">
-        <h1 className="font-calSans text-center text-6xl">Das Team Hinter dem Erfolg von ViconiaCare</h1>
+        <h1 className="font-calSans text-center text-yellow-600 font-passionate text-6xl">Das Team Hinter dem Erfolg von ViconiaCare</h1>
         <p className="mt-3 max-w-xl text-center text-muted-foreground">
           {" "}
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magnam veniam, quis
-          nostrud exercitation ullamco laboris nisi ut aliqui
+          ViconiaCare ist stolz darauf, ein Team von engagierten Fachleuten zu haben, die sich leidenschaftlich für die Bereitstellung von hochwertiger Pflege einsetzen. Unser Team besteht aus erfahrenen Pflegekräften, engagierten Betreuern und einem unterstützenden Verwaltungspersonal, das alle zusammenarbeitet, um sicherzustellen, dass unsere Kunden die bestmögliche Betreuung erhalten. Jeder in unserem Team bringt einzigartige Fähigkeiten und Erfahrungen mit, die es uns ermöglichen, auf die individuellen Bedürfnisse unserer Kunden einzugehen und ihnen eine liebevolle und professionelle Pflege zu bieten.  
         </p>
         <Carousel
           opts={{

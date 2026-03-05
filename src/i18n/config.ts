@@ -6,14 +6,14 @@ export const defaultLocale: Locale = 'de'
 export const localeLabels: Record<Locale, string> = {
   de: 'Deutsch',
   en: 'English',
-  fr: 'Français',
+  fr: 'Russisch',
   it: 'Italiano',
   es: 'Español',
-  pt: 'Português',
+  pt: 'Ucraniano',
   tr: 'Türkçe',
 }
 
 export const localeFlags: Record<Locale, string> = {
-  de: '🇩🇪', en: '🇬🇧', fr: '🇫🇷', it: '🇮🇹',
-  es: '🇪🇸', pt: '🇵🇹', tr: '🇹🇷',
+  de: '🇩🇪', en: '🇬🇧', fr: '🇷🇺', it: '🇮🇹',
+  es: '🇪🇸', pt: '🇺🇦', tr: '🇹🇷',
 }

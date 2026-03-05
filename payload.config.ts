@@ -10,6 +10,8 @@ import { it } from '@payloadcms/translations/languages/it'
 import { es } from '@payloadcms/translations/languages/es'
 import { pt } from '@payloadcms/translations/languages/pt'
 import { tr } from '@payloadcms/translations/languages/tr'
+import { uk } from '@payloadcms/translations/languages/uk'
+import { ru } from '@payloadcms/translations/languages/ru'
 import { resendAdapter } from '@payloadcms/email-resend'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -81,12 +83,14 @@ export default buildConfig({
       { label: 'Español',    code: 'es' },
       { label: 'Português',  code: 'pt' },
       { label: 'Türkçe',     code: 'tr' },
+      { label: 'Українська', code: 'uk' },
+      { label: 'Русский',    code: 'ru' },
     ],
     defaultLocale: 'de',
     fallback: true,
   },
   // ── i18n ─────────────────────────────────────────────
-  i18n: { supportedLanguages: { de, en, fr, it, es, pt, tr }, fallbackLanguage: 'de' },
+  i18n: { supportedLanguages: { de, en, fr, it, es, pt, tr, uk, ru }, fallbackLanguage: 'de' },
 
   // ── Server URL ─────────────────────────────────────────────
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
