@@ -16,15 +16,24 @@ import { resendAdapter } from '@payloadcms/email-resend'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+const resendFromAddress = process.env.RESEND_FROM_ADDRESS ?? 'onboarding@resend.dev'
+const resendFromName = process.env.RESEND_FROM_NAME ?? 'Viconia Care GmbH'
 
 // Collections
 import { Users }     from './payload/collections/Users'
 import { Patients }  from './payload/collections/Patients'
 import { Staff }     from './payload/collections/Staff'
+import { ShiftPlans} from './payload/collections/ShiftPlans'
 import { Documents } from './payload/collections/Documents'
 import { CarePlans } from './payload/collections/CarePlans'
+import { CareSchedules } from './payload/collections/CareSchedules'
+import { Invoices } from './payload/collections/Invoices'
+import { ServiceRecords } from './payload/collections/ServiceRecords'
 import { Media }     from './payload/collections/Media'
 import { Pages }     from './payload/collections/Pages'
+import { Receivables }    from './payload/collections/Receivables'
+import { Routes }    from './payload/collections/Routes'
+import { TimeTracking }   from './payload/collections/TimeTracking'
 import  Testimonials from './payload/collections/Testimonials'
 import Services from '@/payload/collections/Services'
 import sharp from 'sharp'
@@ -34,6 +43,7 @@ import { Navigation }   from './payload/globals/Navigation'
 
 // Image storage with Vercel Blob
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+
 
 
 
@@ -58,9 +68,9 @@ export default buildConfig({
 
   // ── Collections ────────────────────────────────────────
   collections: [
-    Users, Patients, Staff,
-    Documents, CarePlans,
-    Media, Pages, Services, Testimonials
+    Users, Patients, Staff, ShiftPlans,
+    Documents, CarePlans, CareSchedules, Invoices, ServiceRecords, Receivables,
+    Media, Pages, Routes, Services, Testimonials, TimeTracking
   ],
 
   // ── Globals ────────────────────────────────────────────
@@ -68,8 +78,8 @@ export default buildConfig({
 
   // ── email ────────────────────────────────────────────
   email: resendAdapter({
-    defaultFromAddress: 'no-reply@viconiacare.de',
-    defaultFromName: 'Viconia Care GmbH',
+    defaultFromAddress: resendFromAddress,
+    defaultFromName: resendFromName,
     apiKey: process.env.RESEND_API_KEY ?? '',
   }),
 

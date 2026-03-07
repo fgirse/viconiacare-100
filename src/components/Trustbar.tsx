@@ -87,11 +87,11 @@ const TRUST_ITEMS = [
 
 export default function TrustBar() {
   return (
-    <div className="hidden md:block bg-gradient-to-r from-stone-800 via-stone-600 to-stone-900 border-b border-stone-200">
+    <div className="hidden md:block bg-gradient-to-r from-stone-200 via-stone-100 to-stone-200 border-b border-stone-200">
       <div className="max-w-[1600px] mx-auto px-6 py-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
         {TRUST_ITEMS.map(({ Icon, label }, i) => (
           <span key={label} className="flex items-center gap-x-8">
-            <span className="flex items-center gap-2 text-[0.82rem] font-bold uppercase tracking-[0.04em] text-stone-200">
+            <span className="flex items-center gap-2 text-[0.82rem] font-bold uppercase tracking-[0.04em] text-stone-700">
               <Icon />
               {label}
             </span>

@@ -102,7 +102,7 @@ const FEATURES = [
   {
     Icon: IconGlobe,
     title: 'Mehrsprachiges Team',
-    desc: 'Wir sprechen Ihre Sprache – auf Deutsch, Englisch, Französisch, Italienisch, Spanisch, Portugiesisch und Türkisch.',
+    desc: 'Wir sprechen Ihre Sprache – auf Deutsch, Englisch, Französisch, Italienisch, Spanisch, Portugiesisch, Russisch, Ukrainisch und Türkisch.',
   },
 ]
 

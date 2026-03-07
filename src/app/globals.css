@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-display);
   --font-mono: var(--font-bowlby);
+  --primaryButton: var(--primary);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
@@ -42,6 +43,7 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --primaryButton: oklch(42.81% 0.25282 268.918);
 }
 
 @theme inline {
@@ -185,19 +187,24 @@
 }
 
 .headingE {
-  -webkit-text-stroke-width: 3.99px;
+  -webkit-text-stroke-width: 1.99px;
   -webkit-text-stroke-color: #595959;
   font-family: 'Bowlby One SC';
-  font-weight: 800;
 }
 
 .headingF {
-  -webkit-text-stroke-width: 3.66px;
+  -webkit-text-stroke-width: 2.66px;
   -webkit-text-stroke-color: #fffffc;
   font-family: 'Bowlby One SC';
   font-weight: 800;
 }
 
-.kontakt {
-   font-size: clamp(4.80rem, calc(0.346rem + 6.462vw), 15.10rem);
+.history {
+   font-size: clamp(1.80rem, calc(1rem + 5.462vw), 10.10rem);
+}
+.leitbild {
+   font-size: clamp(1.80rem, calc(1rem + 5.462vw), 10.10rem);
+}
+.menu4 {
+   font-size: clamp(1.80rem, calc(1rem + 5.462vw), 10.10rem);
 }

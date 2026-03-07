@@ -10,6 +10,12 @@ import type { Locale } from '@/src/i18n/config'
 
 interface NavItem { label: string; link: string; openInNewTab?: boolean }
 interface SiteContact { phone?: string; email?: string; address?: string }
+interface NavigationGlobal { footerLeistungen?: NavItem[]; footerInfos?: NavItem[] }
+
+const normalizeNavItems = (items?: NavItem[]): NavItem[] => {
+  if (!items?.length) return []
+  return items.filter((item) => Boolean(item?.label?.trim()) && Boolean(item?.link?.trim()))
+}
 
 async function getFooterData(locale: Locale): Promise<{
   leistungen: NavItem[]
@@ -20,25 +26,22 @@ async function getFooterData(locale: Locale): Promise<{
   try {
     const payload = await getPayload({ config: configPromise })
 
-    const [nav, site] = await Promise.all([
+    const [localizedNav, site] = await Promise.all([
       payload.findGlobal({
         slug: 'navigation',
         depth: 0,
         locale,
-        fallbackLocale: 'de',
-      }) as Promise<{
-        footerLeistungen?: NavItem[]
-        footerInfos?: NavItem[]
-      }>,
+        fallbackLocale: false,
+      }) as Promise<NavigationGlobal>,
       payload.findGlobal({ slug: 'site-settings', depth: 0 }) as Promise<{
         siteName?: string
         contact?: SiteContact
       }>,
     ])
-    console.log('[Footer] locale:', locale, '| leistungen:', nav.footerLeistungen?.length ?? 0, '| infos:', nav.footerInfos?.length ?? 0)
+
     return {
-      leistungen: nav.footerLeistungen ?? [],
-      infos: nav.footerInfos ?? [],
+      leistungen: normalizeNavItems(localizedNav.footerLeistungen),
+      infos: normalizeNavItems(localizedNav.footerInfos),
       siteName: site.siteName ?? 'ViconiaCare GmbH',
       contact: site.contact ?? {},
     }
@@ -110,21 +113,6 @@ const IconWhatsApp = () => (
   </svg>
 )
 
-const SERVICES_FALLBACK: NavItem[] = [
-  { label: 'Grundpflege',        link: '/grundpflege' },
-  { label: 'Behandlungspflege',  link: '/behandlung' },
-  { label: 'Hauswirtschaft',     link: '/hauswirtschaft' },
-  { label: 'Begleitung',         link: '/begleitung' },
-  { label: 'Demenzbetreuung',    link: '/demenz' },
-  { label: 'Palliativpflege',    link: '/palliativ' },
-]
-
-const INFO_FALLBACK: NavItem[] = [
-  { label: 'Über uns',    link: '/about/leitbild' },
-  { label: 'Unser Team', link: '/about/team' },
-  { label: 'Kontakt',    link: '/contact' },
-]
-
 const SOCIALS = [
   { icon: <IconFacebook />,  label: 'Facebook',  href: '#' },
   { icon: <IconInstagram />, label: 'Instagram', href: '#' },
@@ -136,8 +124,8 @@ export default async function Footer({ locale }: { locale: Locale }) {
   const { leistungen, infos, siteName, contact } = await getFooterData(locale)
   const t = await getTranslations({ locale, namespace: 'footer' })
 
-  const services  = leistungen.length > 0 ? leistungen : SERVICES_FALLBACK
-  const infoLinks = infos.length > 0 ? infos : INFO_FALLBACK
+  const services = leistungen
+  const infoLinks = infos
 
   const phone   = contact.phone   ?? '+49 40 123 456 789'
   const email   = contact.email   ?? 'info@viconiacare.de'
@@ -205,40 +193,44 @@ export default async function Footer({ locale }: { locale: Locale }) {
           </div>
 
           {/* B1 Services */}
-          <div>
-            <h4 className="font-display text-base font-bold text-white mb-5">{t('col_services')}</h4>
-            <ul className="flex flex-col gap-2.5">
-              {services.map(item => (
-                <li key={item.label}>
-                  <Link
-                    href={item.link as AppPathname}
-                    {...(item.openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    className="text-sm text-white/45 transition-colors duration-200 hover:text-yellow-600"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {services.length > 0 && (
+            <div>
+              <h4 className="font-display text-base font-bold text-white mb-5">{t('col_services')}</h4>
+              <ul className="flex flex-col gap-2.5">
+                {services.map((item) => (
+                  <li key={`${item.label}-${item.link}`}>
+                    <Link
+                      href={item.link as AppPathname}
+                      {...(item.openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      className="text-sm text-white/45 transition-colors duration-200 hover:text-yellow-600"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* B2 Info */}
-          <div>
-            <h4 className="font-display text-base font-bold text-white mb-5">{t('col_info')}</h4>
-            <ul className="flex flex-col gap-2.5">
-              {infoLinks.map(item => (
-                <li key={item.label}>
-                  <Link
-                    href={item.link as AppPathname}
-                    {...(item.openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    className="text-sm text-white/45 transition-colors duration-200 hover:text-yellow-600"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {infoLinks.length > 0 && (
+            <div>
+              <h4 className="font-display text-base font-bold text-white mb-5">{t('col_info')}</h4>
+              <ul className="flex flex-col gap-2.5">
+                {infoLinks.map((item) => (
+                  <li key={`${item.label}-${item.link}`}>
+                    <Link
+                      href={item.link as AppPathname}
+                      {...(item.openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      className="text-sm text-white/45 transition-colors duration-200 hover:text-yellow-600"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Language + Emergency */}
           <div>

@@ -1,43 +1,35 @@
-import type { CollectionConfig } from 'payload';
-import { isPublic } from '../access/roles';
+import type { CollectionConfig } from 'payload'
+
 export const Media: CollectionConfig = {
   slug: 'media',
   access: {
-    read: isPublic,
+    read: () => true,
+    create: ({ req: { user } }) => !!user,
+    update: ({ req: { user } }) =>
+      user?.role === 'superadmin' || user?.role === 'admin' || user?.role === 'editor',
+    delete: ({ req: { user } }) =>
+      user?.role === 'superadmin' || user?.role === 'admin',
   },
   upload: {
-    staticDir: 'media',
+    staticDir: 'public/media',
     imageSizes: [
-      {
-        name: 'thumbnail',
-        width: 400,
-        height: 300,
-        position: 'centre',
-      },
-      {
-        name: 'card',
-        width: 768,
-        height: 1024,
-        position: 'centre',
-      },
-      {
-        name: 'tablet',
-        width: 1024,
-        // By specifying `undefined` or leaving a height undefined,
-        // the image will be sized to a certain width,
-        // but it will retain its original aspect ratio
-        // and calculate a height automatically.
-        height: undefined,
-        position: 'centre',
-      },
+      { name: 'thumbnail', width: 400, height: 300, position: 'centre' },
+      { name: 'card', width: 768, height: 512, position: 'centre' },
+      { name: 'hero', width: 1920, height: 1080, position: 'centre' },
     ],
     adminThumbnail: 'thumbnail',
-    mimeTypes: ['image/*'],
+    mimeTypes: ['image/*', 'application/pdf'],
   },
   fields: [
     {
       name: 'alt',
       type: 'text',
+      label: 'Alt-Text',
+    },
+    {
+      name: 'caption',
+      type: 'text',
+      label: 'Bildunterschrift',
     },
   ],
 }

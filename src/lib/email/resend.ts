@@ -2,8 +2,8 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-const FROM    = process.env.EMAIL_FROM     ?? 'PflegePlus <noreply@pflegeplus.de>'
-const REPLY   = process.env.EMAIL_REPLY_TO ?? 'kontakt@pflegeplus.de'
+const FROM    = process.env.EMAIL_FROM     ?? 'Viconia Care <onboarding@resend.dev>'
+const REPLY   = process.env.EMAIL_REPLY_TO ?? 'info@rettungsanker-freiburg.de'
 
 // ── Branded HTML base template ────────────────────────────────────────────────
 function baseTemplate(title: string, body: string): string {
@@ -40,7 +40,7 @@ function baseTemplate(title: string, body: string): string {
             <p style="margin:0;font-size:12px;color:#78716c;line-height:1.6;">
               ViconiaCare GmbH · Weidestr. 120 b · 22083 Hamburg<br>
               <a href="tel:+4940123456789" style="color:#0d9488;">+49 40 123 456 789</a> ·
-              <a href="mailto:info@viconiacare.de" style="color:#0d9488;">info@viconiacare.de</a>
+              <a href="mailto:info@rettungsanker-freiburg.de" style="color:#0d9488;">info@rettungsanker-freiburg.de</a>
             </p>
           </td>
         </tr>

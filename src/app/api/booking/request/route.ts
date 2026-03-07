@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import resend from '@/src/lib/email/resend'
 
-const FROM  = process.env.EMAIL_FROM     ?? 'ViconiaCare <noreply@viconiacare.de>'
-const REPLY = process.env.EMAIL_REPLY_TO ?? 'info@viconiacare.de'
-const ADMIN = process.env.EMAIL_ADMIN    ?? 'info@viconiacare.de'
+const FROM  = process.env.EMAIL_FROM     ?? 'ViconiaCare <onboarding@resend.dev>'
+const REPLY = process.env.EMAIL_REPLY_TO ?? 'info@rettungsanker-freiburg.de'
+const ADMIN = process.env.EMAIL_ADMIN    ?? 'info@rettungsanker-freiburg.de'
 
 const Schema = z.object({
   appointmentType: z.enum(['info', 'eval', 'visit']),

@@ -327,7 +327,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
     <Fragment>
       <section
         className={cn(
-          "dark pointer-events-auto relative z-999 bg-gradient-to-r from-stone-800 via-stone-600 to-stone-900 backdrop-blur-lg transition-colors duration-300 lg:bg-",
+          "dark pointer-events-auto relative z-999 bg-gradient-to-r from-stone-200 via-stone-100 to-stone-200 backdrop-blur-lg transition-colors duration-300 lg:bg-",
           className,
         )}
       >
@@ -361,7 +361,7 @@ const Navbar9 = ({ className }: Navbar9Props) => {
               </NavigationMenuList>
             </NavigationMenu>
             <div className="flex items-center gap-4">
-              <Button variant="outline" asChild className="hidden lg:flex border-white text-yellow-400 bg-red-400 hover:bg-yellow-500/50">
+              <Button variant="outline" asChild className="hidden lg:flex border-black text-stone-100 !bg-stone-600 hover:!bg-yellow-500">
                 <Link href="/termin">{t("booking")}</Link>
               </Button>
               <Button asChild>
@@ -396,7 +396,7 @@ const DesktopMenuItem = ({ item, index }: DesktopMenuItemProps) => {
       <NavigationMenuItem key={`desktop-menu-item-${index}`} value={`${index}`}>
         <NavigationMenuTrigger
           className={cn(
-            "h-fit bg-yellow-600 font-black uppercase hover:bg-yellow-700 text-foreground focus:!bg-green-600",
+            "h-fit bg-yellow-600 font-black uppercase hover:bg-yellow-700 text-foreground focus:!bg-teal-700/30",
             isActive && "!bg-yellow-700 underline underline-offset-4",
           )}
         >
@@ -502,7 +502,7 @@ const MobileNavItem = ({ item, index }: { item: MenuItem; index: number }) => {
       href={(item.url ?? "/") as AppPathname}
       className={cn(
         "flex h-[3.75rem] items-center border-b p-5 uppercase hover:bg-yellow-700 text-left text-xl leading-[3.75] font-black ring-ring/10 outline-ring/50 transition-all focus-visible:ring-4 focus-visible:outline-1 nth-last-1:border-0",
-        isActive ? "text-yellow-400" : "text-muted-foreground",
+        isActive ? "text-red-600" : "text-muted-foreground",
       )}
     >
       {item.title}

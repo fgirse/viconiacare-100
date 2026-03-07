@@ -1,0 +1,17 @@
+# Query: viconiacare.de
+
+7 results - 4 files
+
+.env:
+  11: # Production: set NEXT_PUBLIC_SERVER_URL=https://viconiacare.de in your hosting environment
+  12: # NEXT_PUBLIC_SERVER_URL=https://viconiacare.de
+
+next.config.ts:
+  16:       { protocol: 'https', hostname: 'viconiacare.de', pathname: '/**' },
+  17:       { protocol: 'https', hostname: '*.viconiacare.de', pathname: '/**' },
+
+src/components/layout/Footer.tsx:
+  131:   const email   = contact.email   ?? 'info@viconiacare.de'
+
+src/lib/email/resend.ts:
+  43:               <a href="mailto:info@rettungsanker-freiburg.de" style="color:#0d9488;">info@viconiacare.de</a>

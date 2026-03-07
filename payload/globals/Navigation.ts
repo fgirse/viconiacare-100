@@ -16,6 +16,8 @@ const simpleNavItemFields = [
       it: 'Etichetta',
       pt: 'Rotulo',
       tr: 'Etiket',
+      ru: 'Название',
+      uk: 'Назва',
     },
   },
   {
@@ -30,6 +32,8 @@ const simpleNavItemFields = [
       it: 'Collegamento',
       pt: 'Link',
       tr: 'Baglanti',
+      ru: 'Ссылка',
+      uk: 'Посилання',
     },
     admin: {
       placeholder: 'https://example.com oder /seite',
@@ -47,6 +51,8 @@ const simpleNavItemFields = [
       it: 'Apri in una nuova scheda',
       pt: 'Abrir em nova aba',
       tr: 'Yeni sekmede ac',
+      ru: 'Открыть в новой вкладке',
+      uk: 'Відкрити в новій вкладці',
     },
   },
 ]
@@ -61,6 +67,8 @@ export const Navigation: GlobalConfig = {
     it: 'Navigazione',
     pt: 'Navegacao',
     tr: 'Navigasyon',
+    ru: 'Навигация',
+    uk: 'Навігація',
   },
   admin: {
     group: {
@@ -71,6 +79,8 @@ export const Navigation: GlobalConfig = {
       it: 'Impostazioni globali',
       pt: 'Configuracoes globais',
       tr: 'Genel Ayarlar',
+      ru: 'Глобальные настройки',
+      uk: 'Глобальні налаштування',
     },
   },
   access: {
@@ -96,6 +106,8 @@ export const Navigation: GlobalConfig = {
             it: 'A. Navigazione principale',
             pt: 'A. Navegacao principal',
             tr: 'A. Ana Navigasyon',
+            ru: 'A. Основная навигация',
+            uk: 'A. Головна навігація',
           },
           fields: [
             {
@@ -109,6 +121,8 @@ export const Navigation: GlobalConfig = {
                 it: 'Elementi di navigazione',
                 pt: 'Itens de navegacao',
                 tr: 'Navigasyon Ogeleri',
+                ru: 'Элементы навигации',
+                uk: 'Елементи навігації',
               },
               maxRows: 10,
               labels: {
@@ -120,6 +134,7 @@ export const Navigation: GlobalConfig = {
                   it: 'Elemento di navigazione',
                   pt: 'Item de navegacao',
                   tr: 'Navigasyon Ogesi',
+                  ru: 'Элемент навигации',
                 },
 
                 plural: {
@@ -130,6 +145,8 @@ export const Navigation: GlobalConfig = {
                   it: 'Elementi di navigazione',
                   pt: 'Itens de navegacao',
                   tr: 'Navigasyon Ogeleri',
+                  ru: 'Элементы навигации',
+                  uk: 'Елементи навігації',
                 },
               },
               fields: [
@@ -145,6 +162,8 @@ export const Navigation: GlobalConfig = {
                     it: 'Sotto-elementi',
                     pt: 'Sub itens',
                     tr: 'Alt Ogeler',
+                    ru: 'Подэлементы',
+                    uk: 'Піделементи',
                   },
                   maxRows: 10,
                   labels: {
@@ -156,6 +175,8 @@ export const Navigation: GlobalConfig = {
                       it: 'Sotto-elemento',
                       pt: 'Sub item',
                       tr: 'Alt Oge',
+                      ru: 'Подэлемент',
+                      uk: 'Піделемент',
                     },
                     plural: {
                       de: 'Unterpunkte',
@@ -165,6 +186,8 @@ export const Navigation: GlobalConfig = {
                       it: 'Sotto-elementi',
                       pt: 'Sub itens',
                       tr: 'Alt Ogeler',
+                      ru: 'Подэлементы',
+                      uk: 'Піделементи',
                     },
                   },
                   admin: {
@@ -183,6 +206,8 @@ export const Navigation: GlobalConfig = {
                         it: 'Sotto-sotto-elementi',
                         pt: 'Sub-sub itens',
                         tr: 'Alt-Alt Ogeler',
+                        ru: 'Подэлементы',
+                        uk: 'Піделементи',
                       },
                       maxRows: 6,
                       labels: {
@@ -194,6 +219,8 @@ export const Navigation: GlobalConfig = {
                           it: 'Sotto-sotto-elemento',
                           pt: 'Sub-sub item',
                           tr: 'Alt-Alt Oge',
+                          ru: 'Подэлемент',
+                          uk: 'Піделемент',
                         },
                         plural: {
                           de: 'Unter-Unterpunkte',
@@ -203,6 +230,8 @@ export const Navigation: GlobalConfig = {
                           it: 'Sotto-sotto-elementi',
                           pt: 'Sub-sub itens',
                           tr: 'Alt-Alt Ogeler',
+                          ru: 'Подэлементы',
+                          uk: 'Піделементи',
                         },
                       },
                       admin: {
@@ -231,6 +260,8 @@ export const Navigation: GlobalConfig = {
             it: 'B. Navigazione del footer',
             pt: 'B. Navegacao do rodape',
             tr: 'B. Alt Bilgi Navigasyonu',
+            ru: 'B. Нижняя навигация',
+            uk: 'B. Нижня навігація',
           },
           fields: [
             // ── B1: Leistungen ──────────────────────────────────────────────
@@ -245,6 +276,8 @@ export const Navigation: GlobalConfig = {
                 it: 'B1 – Servizi',
                 pt: 'B1 – Servicos',
                 tr: 'B1 – Hizmetler',
+                ru: 'B1 – Услуги',
+                uk: 'B1 – Послуги',
               },
               maxRows: 6,
               labels: {
@@ -256,6 +289,8 @@ export const Navigation: GlobalConfig = {
                   it: 'Servizio',
                   pt: 'Servico',
                   tr: 'Hizmet',
+                  ru: 'Услуга',
+                  uk: 'Послуга',
                 },
                 plural: {
                   de: 'Leistungen',
@@ -288,6 +323,8 @@ export const Navigation: GlobalConfig = {
                 it: 'B2 – Informazioni',
                 pt: 'B2 – Informacoes',
                 tr: 'B2 – Bilgiler',
+                ru: 'B2 – Информация',
+                uk: 'B2 – Інформація',
               },
               maxRows: 6,
               labels: {
@@ -299,6 +336,8 @@ export const Navigation: GlobalConfig = {
                   it: 'Informazione',
                   pt: 'Informacao',
                   tr: 'Bilgi',
+                  ru: 'Информация',
+                  uk: 'Інформація',
                 },
                 plural: {
                   de: 'Infos',
@@ -308,6 +347,8 @@ export const Navigation: GlobalConfig = {
                   it: 'Informazioni',
                   pt: 'Informacoes',
                   tr: 'Bilgiler',
+                  ru: 'Информация',
+                  uk: 'Інформація',
                 },
               },
               admin: {
